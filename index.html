@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homerun - منصة خدمات منزلية واحترافية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* المتغيرات والأساسيات */
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f73;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e05a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+        }
+
+        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
+        .mobile-auth-buttons {
+            display: none;
+        }
+
+        /* قسم البحث */
+        .search-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .search-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .search-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 8px;
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: #e05a00;
+        }
+
+        .search-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .search-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .search-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* قسم الميزات */
+        .features {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            padding: 25px 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        /* قسم الفئات */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-img {
+            height: 120px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .category-name {
+            padding: 12px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        /* قسم مقدمي الخدمات */
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .provider-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .provider-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .provider-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .provider-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+
+        .provider-info {
+            flex: 1;
+        }
+
+        .provider-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .provider-rating {
+            color: #ffc107;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .provider-specialty {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .provider-body {
+            padding: 15px;
+        }
+
+        .provider-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .service-tag {
+            background: var(--light);
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .provider-footer {
+            padding: 12px 15px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .provider-price {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* قسم كيف تعمل */
+        .how-it-works {
+            background-color: var(--light);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+            transition: var(--transition);
+        }
+
+        .step:hover .step-number {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        /* قسم التسجيل */
+        .register-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ff8c00 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .register-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .register-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .register-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .register-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* قسم التطبيق */
+        .app-section {
+            background-color: white;
+        }
+
+        .app-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .app-image {
+            text-align: center;
+        }
+
+        .app-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+        }
+
+        .app-text {
+            text-align: right;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .app-description {
+            margin-bottom: 25px;
+            color: var(--gray);
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .app-badge {
+            background-color: var(--dark);
+            color: white;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .app-badge:hover {
+            background-color: #343a40;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.85rem;
+        }
+
+        /* تحسينات التجاوب للهواتف */
+        @media (max-width: 1200px) {
+            .container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .app-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .app-text {
+                text-align: center;
+            }
+            
+            .app-badges {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            /* القائمة المنزلقة للهواتف */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+                align-items: stretch;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            /* أزرار التسجيل داخل القائمة المنزلقة */
+            .mobile-auth-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid var(--light);
+            }
+            
+            .nav-links.active .mobile-auth-buttons {
+                display: flex;
+            }
+            
+            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .search-title {
+                font-size: 1.6rem;
+            }
+            
+            .search-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .register-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .providers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            
+            .section {
+                padding: 30px 0;
+            }
+            
+            .search-section {
+                padding: 30px 0;
+            }
+            
+            .search-title {
+                font-size: 1.4rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .search-input, .search-btn {
+                width: 100%;
+                border-radius: var(--border-radius);
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .provider-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .provider-footer .btn {
+                width: 100%;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .search-tags {
+                gap: 5px;
+            }
+            
+            .search-tag {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .feature-card {
+                padding: 20px 15px;
+            }
+            
+            .category-img {
+                height: 100px;
+                font-size: 2rem;
+            }
+            
+            .provider-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .provider-avatar {
+                margin-left: 0;
+            }
+        }
+
+        /* تحسينات للشاشات الصغيرة جداً */
+        @media (max-width: 360px) {
+            .search-title {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .register-title {
+                font-size: 1.6rem;
+            }
+            
+            .app-title {
+                font-size: 1.5rem;
+            }
+            
+            .app-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .app-badge {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* تحسينات للوضع الأفقي في الهواتف */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .search-section {
+                padding: 30px 0;
+            }
+            
+            .section {
+                padding: 30px 0;
+            }
+            
+            .feature-card {
+                padding: 15px 10px;
+            }
+            
+            .category-img {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--  top-bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 0123456789</span>
+                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- navbar  -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                Homerun
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="catigory.html">الفئات</a></li>
+                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="howwork.html">كيف تعمل</a></li>
+                <li><a href="about.html">عن المنصة</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                
+                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
+                <li class="mobile-auth-buttons">
+                    <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                    <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+                </li>
+            </ul>
+            
+            <!-- أزرار التسجيل للشاشات الكبيرة -->
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- search  -->
+    <section class="search-section">
+        <div class="container">
+            <h1 class="search-title">ابحث عن أفضل الحرفيين والمتخصصين</h1>
+            <p class="search-subtitle">أكثر من 5000 حرفي ومتخصص في مختلف المجالات جاهزون لخدمتك</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="ما الخدمة التي تبحث عنها؟ (سباك، كهربائي، نجار...)">
+                <button class="search-btn">ابحث</button>
+            </div>
+            
+            <div class="search-tags">
+                <div class="search-tag">سباكة</div>
+                <div class="search-tag">كهرباء</div>
+                <div class="search-tag">نقاشة</div>
+                <div class="search-tag">تكييف</div>
+                <div class="search-tag">نجارة</div>
+                <div class="search-tag">تأسيس</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- features  -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار Homerun؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title">حرفيون موثوقون</h3>
+                    <p>جميع الحرفيين على منصتنا تم التحقق من هوياتهم ومهاراتهم</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="feature-title">أسعار تنافسية</h3>
+                    <p>احصل على عروض أسعار متنافسة من عدة حرفيين لخدمتك</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">ضمان الجودة</h3>
+                    <p>نضمن لك جودة الخدمة المقدمة مع إمكانية الإبلاغ عن أي مشكلة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">خدمة سريعة</h3>
+                    <p>احصل على خدمة سريعة من حرفيين قريبين من موقعك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- categories  -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">الفئات الشائعة</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="category-name">سباكة</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="category-name">كهرباء</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <div class="category-name">نقاشة وديكور</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div class="category-name">نجارة</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="category-name">تكييف وتبريد</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="category-name">إلكترونيات</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- providers   -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">أفضل مقدمي الخدمات</h2>
+            <div class="providers-grid">
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="provider-info">
+                            <h3 class="provider-name">أحمد محمد</h3>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
+                            </div>
+                            <div class="provider-specialty">سباك محترف</div>
+                        </div>
+                    </div>
+                    <div class="provider-body">
+                        <p>سباك محترف بخبرة أكثر من 10 سنوات في مجال السباكة المنزلية والتجارية.</p>
+                        <div class="provider-services">
+                            <span class="service-tag">تركيب حنفيات</span>
+                            <span class="service-tag">تصليح تسريبات</span>
+                            <span class="service-tag">تركيب سخانات</span>
+                        </div>
+                    </div>
+                    <div class="provider-footer">
+                        <div class="provider-price">يبدأ من 150 ج.م</div>
+                        <a href="#" class="btn btn-primary">اطلب الخدمة</a>
+                    </div>
+                </div>
+                
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="provider-info">
+                            <h3 class="provider-name">محمود علي</h3>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                            </div>
+                            <div class="provider-specialty">كهربائي منزلي</div>
+                        </div>
+                    </div>
+                    <div class="provider-body">
+                        <p>فني كهرباء متخصص في التركيبات المنزلية وصيانة الأعطال الكهربائية.</p>
+                        <div class="provider-services">
+                            <span class="service-tag">تركيب وصيانة</span>
+                            <span class="service-tag">أعمال التأسيس</span>
+                            <span class="service-tag">إصلاح أعطال</span>
+                        </div>
+                    </div>
+                    <div class="provider-footer">
+                        <div class="provider-price">يبدأ من 120 ج.م</div>
+                        <a href="#" class="btn btn-primary">اطلب الخدمة</a>
+                    </div>
+                </div>
+                
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="provider-info">
+                            <h3 class="provider-name">يوسف خالد</h3>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span style="color: var(--gray); font-size: 0.9rem;">(5.0)</span>
+                            </div>
+                            <div class="provider-specialty">فني تكييف</div>
+                        </div>
+                    </div>
+                    <div class="provider-body">
+                        <p>فني تكييف وتبريد معتمد لصيانة وتركيب جميع أنواع المكيفات المنزلية.</p>
+                        <div class="provider-services">
+                            <span class="service-tag">صيانة مكيفات</span>
+                            <span class="service-tag">تنظيف وتعبئة</span>
+                            <span class="service-tag">تركيب مكيفات</span>
+                        </div>
+                    </div>
+                    <div class="provider-footer">
+                        <div class="provider-price">يبدأ من 200 ج.م</div>
+                        <a href="#" class="btn btn-primary">اطلب الخدمة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- how-it-works   -->
+    <section class="section how-it-works">
+        <div class="container">
+            <h2 class="section-title">كيف تعمل المنصة</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">اختر الخدمة</h3>
+                    <p>ابحث عن الخدمة التي تحتاجها أو تصفح الفئات المتاحة</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">اختر الحرفي</h3>
+                    <p>اطلع على ملفات الحرفيين واختر المناسب لاحتياجاتك</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">احصل على الخدمة</h3>
+                    <p>حدد موعد الخدمة وادفع بسهولة بعد الانتهاء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  section register -->
+    <section class="section register-section">
+        <div class="container register-content">
+            <h2 class="register-title">انضم إلى منصة Homerun</h2>
+            <p class="register-subtitle">سجل الآن سواء كنت تبحث عن خدمات أو تريد تقديم خدماتك</p>
+            
+            <div class="register-options">
+                <a href="#" class="btn" style="background: white; color: var(--secondary); padding: 12px 20px;">
+                    <i class="fas fa-search"></i> أبحث عن خدمة
+                </a>
+                <a href="#" class="btn btn-outline" style="background: transparent; border: 2px solid white; color: white; padding: 12px 20px;">
+                    <i class="fas fa-tools"></i> أقدم خدمة
+                </a>
+            </div>
+            
+            <p>انضم إلى أكثر من 5000 حرفي ومتخصص على منصتنا</p>
+        </div>
+    </section>
+
+  
+
+    <!--footer-->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Homerun</h3>
+                    <p>منصة ربط رائدة في مصر، تتيح للعملاء العثور على أفضل الحرفيين والمتخصصين في مختلف المجالات، وتوفر للحرفيين فرصة لعرض خدماتهم.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">الفئات</a></li>
+                        <li><a href="#">مقدمو الخدمات</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">كيف تعمل المنصة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 0123456789</li>
+                        <li><i class="fas fa-envelope"></i> info@homerun.com.eg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 Homerun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود JavaScript للتفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // تغيير الأيقونة بين القائمة والإغلاق
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            // البحث عن الخدمات
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            const searchTags = document.querySelectorAll('.search-tag');
+            
+            searchBtn.addEventListener('click', function() {
+                if (searchInput.value.trim() !== '') {
+                    alert(`سيتم البحث عن: ${searchInput.value}`);
+                    // هنا يمكن إضافة كود البحث الفعلي
+                }
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+            
+            searchTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    searchInput.value = this.textContent;
+                    searchBtn.click();
+                });
+            });
+            
+            // اختيار الفئات
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryName = this.querySelector('.category-name').textContent;
+                    alert(`سيتم عرض مقدمي الخدمات في: ${categoryName}`);
+                    // هنا يمكن إضافة كود التوجيه للصفحة المناسبة
+                });
+            });
+            
+            // طلب الخدمة من مقدم الخدمة
+            const serviceBtns = document.querySelectorAll('.provider-card .btn');
+            serviceBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const providerName = this.closest('.provider-card').querySelector('.provider-name').textContent;
+                    alert(`سيتم طلب الخدمة من: ${providerName}`);
+                    // هنا يمكن إضافة كود طلب الخدمة
+                });
+            });
+            
+            // إضافة تأثيرات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // تطبيق تأثيرات الظهور على العناصر
+            const animatedElements = document.querySelectorAll('.feature-card, .category-card, .provider-card, .step');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

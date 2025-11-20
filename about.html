@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن المنصة - Homerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* المتغيرات والأساسيات */
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f73;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+        }
+
+        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
+        .mobile-auth-buttons {
+            display: none;
+        }
+
+        /* رأس الصفحة */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* محتوى صفحة عن المنصة */
+        .about-page {
+            padding: 40px 0;
+        }
+
+        /* قسم مهمتنا ورؤيتنا */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .mission-card, .vision-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon, .vision-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .mission-title, .vision-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .mission-text, .vision-text {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* قسم قيمنا */
+        .values-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 60px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            background: var(--light);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .value-description {
+            color: var(--gray);
+        }
+
+        /* قسم تاريخنا */
+        .history-section {
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin: 40px 0;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 30px;
+            right: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+            top: 20px;
+            left: 100%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+            top: 20px;
+            right: 100%;
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .timeline-description {
+            color: var(--gray);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -10px;
+        }
+
+        /* قسم فريق العمل */
+        .team-section {
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-photo {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .member-social a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            color: var(--primary);
+        }
+
+        /* قسم الإحصائيات */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* قسم الشركاء */
+        .partners-section {
+            margin-bottom: 60px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .timeline::before {
+                right: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-right: 70px;
+                padding-left: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                right: 0;
+                padding-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            /* القائمة المنزلقة للهواتف */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+                align-items: stretch;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            /* أزرار التسجيل داخل القائمة المنزلقة */
+            .mobile-auth-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid var(--light);
+            }
+            
+            .nav-links.active .mobile-auth-buttons {
+                display: flex;
+            }
+            
+            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 0123456789</span>
+                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                Homerun
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="catigory.html">الفئات</a></li>
+                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="howwork.html">كيف تعمل</a></li>
+                <li><a href="about.html">عن المنصة</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                
+                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
+                <li class="mobile-auth-buttons">
+                    <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                    <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+                </li>
+            </ul>
+            
+            <!-- أزرار التسجيل للشاشات الكبيرة -->
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">عن منصة Homerun</h1>
+            <p class="page-subtitle">منصة رائدة تهدف إلى ربط العملاء بأفضل الحرفيين والمتخصصين في مختلف المجالات، مع توفير تجربة مستخدم استثنائية وخدمات عالية الجودة</p>
+        </div>
+    </div>
+
+    <!-- محتوى صفحة عن المنصة -->
+    <div class="container about-page">
+        <!-- قسم مهمتنا ورؤيتنا -->
+        <div class="mission-vision">
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h2 class="mission-title">مهمتنا</h2>
+                <p class="mission-text">نسعى إلى تبسيط عملية العثور على الحرفيين والمتخصصين الموثوقين، وتوفير منصة شاملة تمكن العملاء من الحصول على خدمات عالية الجودة بأسعار مناسبة، مع تمكين الحرفيين من عرض مهاراتهم وتوسيع قاعدة عملائهم.</p>
+            </div>
+            
+            <div class="vision-card">
+                <div class="vision-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h2 class="vision-title">رؤيتنا</h2>
+                <p class="vision-text">أن نكون المنصة الرائدة في الشرق الأوسط لربط العملاء بالحرفيين والمتخصصين، وأن نساهم في تطوير قطاع الخدمات الحرفية من خلال تبني أحدث التقنيات وتقديم حلول مبتكرة تلبي احتياجات جميع الأطراف.</p>
+            </div>
+        </div>
+
+        <!-- قسم قيمنا -->
+        <div class="values-section">
+            <h2 class="section-title">قيمنا</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">الثقة والموثوقية</h3>
+                    <p class="value-description">نحرص على التحقق من جميع الحرفيين وضمان جودة خدماتهم لتوفير تجربة آمنة وموثوقة للعملاء.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="value-title">الجودة والتميز</h3>
+                    <p class="value-description">نسعى دائماً لتقديم خدمات عالية الجودة تتجاوز توقعات العملاء من خلال معايير صارمة للجودة.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">الابتكار</h3>
+                    <p class="value-description">نتبنى أحدث التقنيات والحلول المبتكرة لتحسين تجربة المستخدم وتطوير قطاع الخدمات.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">الشراكة</h3>
+                    <p class="value-description">نؤمن بالعمل المشترك وبناء شراكات قوية مع الحرفيين والعملاء لتحقيق النجاح للجميع.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم تاريخنا -->
+        <div class="history-section">
+            <h2 class="section-title">رحلة تطورنا</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3 class="timeline-title">انطلاق المنصة</h3>
+                        <p class="timeline-description">بدأت رحلة Homerun بفكرة بسيطة تهدف إلى تسهيل عملية العثور على الحرفيين الموثوقين، حيث أطلقنا النسخة الأولى من المنصة في القاهرة.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h3 class="timeline-title">التوسع الجغرافي</h3>
+                        <p class="timeline-description">قمنا بالتوسع لخدمة 5 محافظات جديدة ووصل عدد الحرفيين المسجلين إلى أكثر من 1000 حرفي في مختلف التخصصات.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h3 class="timeline-title">إطلاق التطبيق</h3>
+                        <p class="timeline-description">أطلقنا تطبيقات الهواتف الذكية لمنصتنا مما ساهم في زيادة عدد المستخدمين بنسبة 300% وتحسين تجربة المستخدم بشكل كبير.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3 class="timeline-title">الريادة والتميز</h3>
+                        <p class="timeline-description">أصبحنا المنصة الرائدة في مصر مع أكثر من 5000 حرفي مسجل وخدمة أكثر من 50,000 عميل راضٍ عن خدماتنا.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم فريق العمل -->
+        <div class="team-section">
+            <h2 class="section-title">فريق العمل</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">أحمد محمود</h3>
+                        <div class="member-role">المؤسس والرئيس التنفيذي</div>
+                        <p class="member-bio">خبير في مجال التكنولوجيا وريادة الأعمال، يملك خبرة تزيد عن 10 سنوات في تطوير المنصات الرقمية.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">مريم خالد</h3>
+                        <div class="member-role">مديرة العمليات</div>
+                        <p class="member-bio">متخصصة في إدارة العمليات وتحسين تجربة المستخدم، تهدف إلى تقديم أفضل خدمة ممكنة للعملاء والحرفيين.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">يوسف أحمد</h3>
+                        <div class="member-role">رئيس قسم التكنولوجيا</div>
+                        <p class="member-bio">مطور ومهندس برمجيات متميز، يقود فريق التطوير لبناء منصة تقنية متطورة وسهلة الاستخدام.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">سارة محمد</h3>
+                        <div class="member-role">مديرة التسويق</div>
+                        <p class="member-bio">خبيرة في التسويق الرقمي وبناء العلامات التجارية، تعمل على نشر رسالة المنصة وزيادة الوعي بها.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الإحصائيات -->
+        <div class="stats-section">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">أرقامنا تتحدث</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">5,000+</div>
+                        <div class="stat-label">حرفي موثوق</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">50,000+</div>
+                        <div class="stat-label">عميل راضٍ</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">محافظة مصرية</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">عملاء سعداء</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الشركاء -->
+        <div class="partners-section">
+            <h2 class="section-title">شركاؤنا</h2>
+            
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <div style="font-weight: 700; color: var(--primary);">شركة تقنية</div>
+                </div>
+                
+                <div class="partner-logo">
+                    <div style="font-weight: 700; color: var(--primary);">بنك التنمية</div>
+                </div>
+                
+                <div class="partner-logo">
+                    <div style="font-weight: 700; color: var(--primary);">اتحاد الحرفيين</div>
+                </div>
+                
+                <div class="partner-logo">
+                    <div style="font-weight: 700; color: var(--primary);">مؤسسة دعم المشاريع</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Homerun</h3>
+                    <p>منصة ربط رائدة في مصر، تتيح للعملاء العثور على أفضل الحرفيين والمتخصصين في مختلف المجالات، وتوفر للحرفيين فرصة لعرض خدماتهم.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="categories.html">الفئات</a></li>
+                        <li><a href="providers.html">مقدمو الخدمات</a></li>
+                        <li><a href="how-it-works.html">كيف تعمل</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">كيف تعمل المنصة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 0123456789</li>
+                        <li><i class="fas fa-envelope"></i> info@homerun.com.eg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 Homerun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود JavaScript للتفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // تغيير الأيقونة بين القائمة والإغلاق
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            // عدادات الإحصائيات المتحركة
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            function animateNumbers() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.textContent);
+                    const increment = target / 100;
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                        }
+                    }, 20);
+                });
+            }
+            
+            // تفعيل العدادات عند التمرير للقسم
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(statsSection);
+            
+            // إضافة تأثيرات عند التمرير
+            const scrollObserverOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const scrollObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, scrollObserverOptions);
+            
+            // تطبيق تأثيرات الظهور على العناصر
+            const animatedElements = document.querySelectorAll('.mission-card, .vision-card, .value-card, .timeline-item, .team-member');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                scrollObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

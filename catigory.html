@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفئات - Homerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* المتغيرات والأساسيات */
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f73;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e05a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+        }
+
+        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
+        .mobile-auth-buttons {
+            display: none;
+        }
+
+        /* صفحة الفئات */
+        .categories-page {
+            padding: 40px 0;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .categories-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 400px;
+            flex: 1;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            border-right: none;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+
+        /* شبكة الفئات */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 15px;
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .category-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .category-body {
+            padding: 20px;
+        }
+
+        .category-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .category-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .service-tag {
+            background: var(--light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .category-footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-rating {
+            color: #ffc107;
+        }
+
+        .category-action {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .category-action i {
+            margin-right: 5px;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-action i {
+            transform: translateX(-5px);
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .categories-filter {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            /* القائمة المنزلقة للهواتف */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+                align-items: stretch;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            /* أزرار التسجيل داخل القائمة المنزلقة */
+            .mobile-auth-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid var(--light);
+            }
+            
+            .nav-links.active .mobile-auth-buttons {
+                display: flex;
+            }
+            
+            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .filter-options {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 0123456789</span>
+                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                Homerun
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="catigory.html">الفئات</a></li>
+                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="howwork.html">كيف تعمل</a></li>
+                <li><a href="about.html">عن المنصة</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                
+                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
+                <li class="mobile-auth-buttons">
+                    <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                    <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+                </li>
+            </ul>
+            
+            <!-- أزرار التسجيل للشاشات الكبيرة -->
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">فئات الخدمات</h1>
+            <p class="page-subtitle">اكتشف جميع الخدمات المتاحة على منصتنا واختر ما يناسب احتياجاتك من بين مئات الحرفيين والمتخصصين</p>
+        </div>
+    </div>
+
+    <!-- محتوى صفحة الفئات -->
+    <div class="container categories-page">
+        <!-- أدوات التصفية والبحث -->
+        <div class="categories-filter">
+            <div class="filter-options">
+                <select class="filter-select">
+                    <option>جميع الفئات</option>
+                    <option>السباكة</option>
+                    <option>الكهرباء</option>
+                    <option>النقاشة والديكور</option>
+                    <option>النجارة</option>
+                    <option>التكييف والتبريد</option>
+                    <option>الإلكترونيات</option>
+                </select>
+                
+                <select class="filter-select">
+                    <option>الترتيب بحسب: الأكثر شيوعاً</option>
+                    <option>الأعلى تقييماً</option>
+                    <option>الأقل سعراً</option>
+                    <option>الأعلى سعراً</option>
+                    <option>الأحدث</option>
+                </select>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="ابحث عن خدمة معينة...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <!-- شبكة الفئات -->
+        <div class="categories-grid">
+            <!-- فئة السباكة -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">السباكة</h3>
+                        <div class="category-count">125 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">خدمات سباكة منزلية وتجارية متكاملة لجميع احتياجاتك من الإصلاحات البسيطة إلى التركيبات المعقدة.</p>
+                    <div class="category-services">
+                        <span class="service-tag">تصليح تسريبات</span>
+                        <span class="service-tag">تركيب حنفيات</span>
+                        <span class="service-tag">تنظيف مجاري</span>
+                        <span class="service-tag">تركيب سخانات</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة الكهرباء -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">الكهرباء</h3>
+                        <div class="category-count">98 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">فنيو كهرباء معتمدون لجميع أعمال التركيبات المنزلية والتجارية وإصلاح الأعطال الكهربائية.</p>
+                    <div class="category-services">
+                        <span class="service-tag">تركيب وصيانة</span>
+                        <span class="service-tag">أعمال التأسيس</span>
+                        <span class="service-tag">إصلاح أعطال</span>
+                        <span class="service-tag">تركيب كاميرات</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة النقاشة والديكور -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">النقاشة والديكور</h3>
+                        <div class="category-count">76 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">خدمات متكاملة للدهان والديكور بأحدث التقنيات والألوان لتحويل منزلك إلى تحفة فنية.</p>
+                    <div class="category-services">
+                        <span class="service-tag">دهان حوائط</span>
+                        <span class="service-tag">ورق جدران</span>
+                        <span class="service-tag">ديكورات جبس</span>
+                        <span class="service-tag">دهان أثاث</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(5.0)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة النجارة -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">النجارة</h3>
+                        <div class="category-count">64 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">نجارون محترفون لجميع أعمال النجارة المنزلية من الأثاث إلى التركيبات الخشبية والديكورات.</p>
+                    <div class="category-services">
+                        <span class="service-tag">تصنيع أثاث</span>
+                        <span class="service-tag">تركيب مطابخ</span>
+                        <span class="service-tag">إصلاح أعطال</span>
+                        <span class="service-tag">تركيب أرضيات</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة التكييف والتبريد -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">التكييف والتبريد</h3>
+                        <div class="category-count">53 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">فنيو تكييف معتمدون لصيانة وتركيب جميع أنواع المكيفات المنزلية والتجارية بضمان على العمل.</p>
+                    <div class="category-services">
+                        <span class="service-tag">صيانة مكيفات</span>
+                        <span class="service-tag">تنظيف وتعبئة</span>
+                        <span class="service-tag">تركيب مكيفات</span>
+                        <span class="service-tag">إصلاح أعطال</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة الإلكترونيات -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">الإلكترونيات</h3>
+                        <div class="category-count">89 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">فنيو إلكترونيات متخصصون في صيانة الأجهزة المنزلية والإلكترونية بجميع أنواعها وأعطالها.</p>
+                    <div class="category-services">
+                        <span class="service-tag">صيانة تلفزيونات</span>
+                        <span class="service-tag">إصلاح أجهزة</span>
+                        <span class="service-tag">تركيب أنظمة</span>
+                        <span class="service-tag">صيانة أجهزة منزلية</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة النظافة -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">النظافة</h3>
+                        <div class="category-count">112 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">خدمات نظافة متكاملة للمنازل والمكاتب باستخدام أحدث المعدات والمنظفات الآمنة والفعالة.</p>
+                    <div class="category-services">
+                        <span class="service-tag">تنظيف منازل</span>
+                        <span class="service-tag">تنظيف مكاتب</span>
+                        <span class="service-tag">تعقيم وتطهير</span>
+                        <span class="service-tag">تنظيف سجاد</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(5.0)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- فئة الحدائق -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">تنسيق الحدائق</h3>
+                        <div class="category-count">41 حرفي</div>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <p class="category-description">مصممو حدائق محترفون لتحويل مساحاتك الخارجية إلى جنة خضراء بتصميمات مبتنية وعملية.</p>
+                    <div class="category-services">
+                        <span class="service-tag">تنسيق حدائق</span>
+                        <span class="service-tag">تركيب نباتات</span>
+                        <span class="service-tag">صيانة مسطحات</span>
+                        <span class="service-tag">أنظمة ري</span>
+                    </div>
+                </div>
+                <div class="category-footer">
+                    <div class="category-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                    </div>
+                    <a href="#" class="category-action">
+                        <span>عرض الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Homerun</h3>
+                    <p>منصة ربط رائدة في مصر، تتيح للعملاء العثور على أفضل الحرفيين والمتخصصين في مختلف المجالات، وتوفر للحرفيين فرصة لعرض خدماتهم.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="catigory.html">الفئات</a></li>
+                        <li><a href="service.html">مقدمو الخدمات</a></li>
+                        <li><a href="howwork.html">كيف تعمل</a></li>
+                        <li><a href="about.html">عن المنصة</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">كيف تعمل المنصة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 0123456789</li>
+                        <li><i class="fas fa-envelope"></i> info@homerun.com.eg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 Homerun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود JavaScript للتفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // تغيير الأيقونة بين القائمة والإغلاق
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            // البحث في الفئات
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            searchBtn.addEventListener('click', function() {
+                if (searchInput.value.trim() !== '') {
+                    alert(`سيتم البحث عن: ${searchInput.value}`);
+                    // هنا يمكن إضافة كود البحث الفعلي
+                }
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+            
+            // اختيار الفئة
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryName = this.querySelector('.category-name').textContent;
+                    alert(`سيتم عرض خدمات: ${categoryName}`);
+                    // هنا يمكن إضافة كود التوجيه لصفحة الخدمات
+                });
+            });
+            
+            // تصفية الفئات
+            const filterSelects = document.querySelectorAll('.filter-select');
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    alert(`تم التصفية بحسب: ${this.value}`);
+                    // هنا يمكن إضافة كود التصفية الفعلي
+                });
+            });
+            
+            // إضافة تأثيرات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // تطبيق تأثيرات الظهور على العناصر
+            const animatedElements = document.querySelectorAll('.category-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

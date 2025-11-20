@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقدمو الخدمات - Homerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* المتغيرات والأساسيات */
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f73;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e05a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+        }
+
+        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
+        .mobile-auth-buttons {
+            display: none;
+        }
+
+        /* رأس الصفحة */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* محتوى صفحة مقدمي الخدمات */
+        .providers-page {
+            padding: 40px 0;
+        }
+
+        /* أدوات التصفية */
+        .providers-filter {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .filter-reset {
+            color: var(--secondary);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .filter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .filter-select, .filter-input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+        }
+
+        .filter-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* معلومات النتائج */
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .results-count {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* شبكة مقدمي الخدمات */
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .provider-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .provider-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .provider-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .provider-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .provider-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-left: 15px;
+            overflow: hidden;
+        }
+
+        .provider-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .provider-info {
+            flex: 1;
+        }
+
+        .provider-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .provider-specialty {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .provider-rating {
+            color: #ffc107;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .provider-reviews {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .provider-body {
+            padding: 20px;
+        }
+
+        .provider-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .provider-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .service-tag {
+            background: var(--light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .provider-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .provider-footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .provider-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: block;
+        }
+
+        /* الترقيم */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 10px;
+        }
+
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            background: white;
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination-item.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .pagination-item:hover:not(.active) {
+            background: var(--light);
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .filter-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .providers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            /* القائمة المنزلقة للهواتف */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+                align-items: stretch;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            /* أزرار التسجيل داخل القائمة المنزلقة */
+            .mobile-auth-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid var(--light);
+            }
+            
+            .nav-links.active .mobile-auth-buttons {
+                display: flex;
+            }
+            
+            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .filter-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .provider-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .provider-avatar {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .results-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .providers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .provider-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 0123456789</span>
+                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                Homerun
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="catigory.html">الفئات</a></li>
+                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="howwork.html">كيف تعمل</a></li>
+                <li><a href="about.html">عن المنصة</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                
+                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
+                <li class="mobile-auth-buttons">
+                    <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                    <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+                </li>
+            </ul>
+            
+            <!-- أزرار التسجيل للشاشات الكبيرة -->
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="#" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">مقدمو الخدمات</h1>
+            <p class="page-subtitle">اكتشف أفضل الحرفيين والمتخصصين في مختلف المجالات واختر من يناسب احتياجاتك بناءً على تقييمات حقيقية وأسعار تنافسية</p>
+        </div>
+    </div>
+
+    <!-- محتوى صفحة مقدمي الخدمات -->
+    <div class="container providers-page">
+        <!-- أدوات التصفية -->
+        <div class="providers-filter">
+            <div class="filter-header">
+                <h2 class="filter-title">تصفية النتائج</h2>
+                <span class="filter-reset">إعادة تعيين الفلاتر</span>
+            </div>
+            
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label class="filter-label">الفئة</label>
+                    <select class="filter-select" id="category-filter">
+                        <option value="">جميع الفئات</option>
+                        <option value="plumbing">السباكة</option>
+                        <option value="electrical">الكهرباء</option>
+                        <option value="painting">النقاشة والديكور</option>
+                        <option value="carpentry">النجارة</option>
+                        <option value="ac">التكييف والتبريد</option>
+                        <option value="electronics">الإلكترونيات</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">المدينة / المنطقة</label>
+                    <select class="filter-select" id="location-filter">
+                        <option value="">جميع المناطق</option>
+                        <option value="cairo">القاهرة</option>
+                        <option value="giza">الجيزة</option>
+                        <option value="alexandria">الإسكندرية</option>
+                        <option value="sharqia">الشرقية</option>
+                        <option value="daqahlia">الدقهلية</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">التقييم</label>
+                    <select class="filter-select" id="rating-filter">
+                        <option value="">جميع التقييمات</option>
+                        <option value="5">5 نجوم</option>
+                        <option value="4">4 نجوم فأكثر</option>
+                        <option value="3">3 نجوم فأكثر</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">نطاق السعر (ج.م)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" class="filter-input" placeholder="الحد الأدنى" id="min-price">
+                        <input type="number" class="filter-input" placeholder="الحد الأقصى" id="max-price">
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">الخدمات المطلوبة</label>
+                    <div class="filter-checkboxes">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="service" value="installation">
+                            <span>التركيب</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="service" value="maintenance">
+                            <span>الصيانة</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="service" value="repair">
+                            <span>الإصلاح</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="service" value="consultation">
+                            <span>الاستشارة</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn btn-outline" id="reset-filters">إعادة تعيين</button>
+                <button class="btn btn-primary" id="apply-filters">تطبيق الفلاتر</button>
+            </div>
+        </div>
+
+        <!-- معلومات النتائج -->
+        <div class="results-info">
+            <div class="results-count">عرض 1-8 من 42 مقدم خدمة</div>
+            <div class="sort-options">
+                <span>ترتيب حسب:</span>
+                <select class="filter-select" id="sort-by">
+                    <option value="popular">الأكثر شيوعاً</option>
+                    <option value="rating">الأعلى تقييماً</option>
+                    <option value="price-low">الأقل سعراً</option>
+                    <option value="price-high">الأعلى سعراً</option>
+                    <option value="newest">الأحدث</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- شبكة مقدمي الخدمات -->
+        <div class="providers-grid">
+            <!-- مقدم خدمة 1 -->
+            <div class="provider-card">
+                <div class="provider-badge">مميز</div>
+                <div class="provider-header">
+                    <div class="provider-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="provider-info">
+                        <h3 class="provider-name">أحمد محمد</h3>
+                        <span class="provider-specialty">سباك محترف</span>
+                        <div class="provider-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="provider-reviews">(127 تقييم)</div>
+                    </div>
+                </div>
+                <div class="provider-body">
+                    <p class="provider-description">سباك محترف بخبرة أكثر من 10 سنوات في مجال السباكة المنزلية والتجارية. متخصص في أعمال التركيبات والإصلاحات المعقدة.</p>
+                    <div class="provider-services">
+                        <span class="service-tag">تصليح تسريبات</span>
+                        <span class="service-tag">تركيب حنفيات</span>
+                        <span class="service-tag">تنظيف مجاري</span>
+                        <span class="service-tag">تركيب سخانات</span>
+                    </div>
+                    <div class="provider-stats">
+                        <div class="stat">
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">إنجاز في الوقت</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">350+</div>
+                            <div class="stat-label">مشروع مكتمل</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="provider-footer">
+                    <div class="provider-price">
+                        150 ج.م
+                        <span class="price-note">يبدأ من</span>
+                    </div>
+                    <a href="provider-details.html" class="btn btn-primary">عرض الملف</a>
+                </div>
+            </div>
+
+            <!-- مقدم خدمة 2 -->
+            <div class="provider-card">
+                <div class="provider-header">
+                    <div class="provider-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="provider-info">
+                        <h3 class="provider-name">محمود علي</h3>
+                        <span class="provider-specialty">كهربائي منزلي</span>
+                        <div class="provider-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                        <div class="provider-reviews">(89 تقييم)</div>
+                    </div>
+                </div>
+                <div class="provider-body">
+                    <p class="provider-description">فني كهرباء متخصص في التركيبات المنزلية وصيانة الأعطال الكهربائية. حاصل على شهادات في السلامة الكهربائية.</p>
+                    <div class="provider-services">
+                        <span class="service-tag">تركيب وصيانة</span>
+                        <span class="service-tag">أعمال التأسيس</span>
+                        <span class="service-tag">إصلاح أعطال</span>
+                    </div>
+                    <div class="provider-stats">
+                        <div class="stat">
+                            <div class="stat-value">95%</div>
+                            <div class="stat-label">إنجاز في الوقت</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">280+</div>
+                            <div class="stat-label">مشروع مكتمل</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="provider-footer">
+                    <div class="provider-price">
+                        120 ج.م
+                        <span class="price-note">يبدأ من</span>
+                    </div>
+                    <a href="provider-details.html" class="btn btn-primary">عرض الملف</a>
+                </div>
+            </div>
+
+            <!-- مقدم خدمة 3 -->
+            <div class="provider-card">
+                <div class="provider-badge">الأعلى تقييماً</div>
+                <div class="provider-header">
+                    <div class="provider-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="provider-info">
+                        <h3 class="provider-name">يوسف خالد</h3>
+                        <span class="provider-specialty">فني تكييف</span>
+                        <div class="provider-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                        <div class="provider-reviews">(64 تقييم)</div>
+                    </div>
+                </div>
+                <div class="provider-body">
+                    <p class="provider-description">فني تكييف وتبريد معتمد لصيانة وتركيب جميع أنواع المكيفات المنزلية. متخصص في مكيفات الاسبليت والمركزي.</p>
+                    <div class="provider-services">
+                        <span class="service-tag">صيانة مكيفات</span>
+                        <span class="service-tag">تنظيف وتعبئة</span>
+                        <span class="service-tag">تركيب مكيفات</span>
+                    </div>
+                    <div class="provider-stats">
+                        <div class="stat">
+                            <div class="stat-value">99%</div>
+                            <div class="stat-label">إنجاز في الوقت</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">420+</div>
+                            <div class="stat-label">مشروع مكتمل</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="provider-footer">
+                    <div class="provider-price">
+                        200 ج.م
+                        <span class="price-note">يبدأ من</span>
+                    </div>
+                    <a href="provider-details.html" class="btn btn-primary">عرض الملف</a>
+                </div>
+            </div>
+
+            <!-- مقدم خدمة 4 -->
+            <div class="provider-card">
+                <div class="provider-header">
+                    <div class="provider-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="provider-info">
+                        <h3 class="provider-name">سعيد محمود</h3>
+                        <span class="provider-specialty">نقاش ومصمم ديكور</span>
+                        <div class="provider-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="provider-reviews">(156 تقييم)</div>
+                    </div>
+                </div>
+                <div class="provider-body">
+                    <p class="provider-description">نقاش محترف ومصمم ديكور بخبرة واسعة في أعمال الدهان وورق الجدران والديكورات الجبسية. ألوان وتصميمات عصرية.</p>
+                    <div class="provider-services">
+                        <span class="service-tag">دهان حوائط</span>
+                        <span class="service-tag">ورق جدران</span>
+                        <span class="service-tag">ديكورات جبس</span>
+                    </div>
+                    <div class="provider-stats">
+                        <div class="stat">
+                            <div class="stat-value">96%</div>
+                            <div class="stat-label">إنجاز في الوقت</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">520+</div>
+                            <div class="stat-label">مشروع مكتمل</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="provider-footer">
+                    <div class="provider-price">
+                        180 ج.م
+                        <span class="price-note">يبدأ من</span>
+                    </div>
+                    <a href="provider-details.html" class="btn btn-primary">عرض الملف</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الترقيم -->
+        <div class="pagination">
+            <div class="pagination-item"><i class="fas fa-chevron-right"></i></div>
+            <div class="pagination-item active">1</div>
+            <div class="pagination-item">2</div>
+            <div class="pagination-item">3</div>
+            <div class="pagination-item">4</div>
+            <div class="pagination-item">5</div>
+            <div class="pagination-item"><i class="fas fa-chevron-left"></i></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Homerun</h3>
+                    <p>منصة ربط رائدة في مصر، تتيح للعملاء العثور على أفضل الحرفيين والمتخصصين في مختلف المجالات، وتوفر للحرفيين فرصة لعرض خدماتهم.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="categories.html">الفئات</a></li>
+                        <li><a href="providers.html">مقدمو الخدمات</a></li>
+                        <li><a href="how-it-works.html">كيف تعمل</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">كيف تعمل المنصة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 0123456789</li>
+                        <li><i class="fas fa-envelope"></i> info@homerun.com.eg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 Homerun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود JavaScript للتفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // تغيير الأيقونة بين القائمة والإغلاق
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            // تطبيق الفلاتر
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            const resetFiltersBtn = document.getElementById('reset-filters');
+            const filterReset = document.querySelector('.filter-reset');
+            
+            applyFiltersBtn.addEventListener('click', function() {
+                const category = document.getElementById('category-filter').value;
+                const location = document.getElementById('location-filter').value;
+                const rating = document.getElementById('rating-filter').value;
+                const minPrice = document.getElementById('min-price').value;
+                const maxPrice = document.getElementById('max-price').value;
+                
+                // محاكاة تطبيق الفلاتر
+                alert('تم تطبيق الفلاتر المحددة');
+                // في التطبيق الحقيقي، سيتم هنا إرسال طلب AJAX أو تصفية البيانات محلياً
+            });
+            
+            resetFiltersBtn.addEventListener('click', resetAllFilters);
+            filterReset.addEventListener('click', resetAllFilters);
+            
+            function resetAllFilters() {
+                document.getElementById('category-filter').value = '';
+                document.getElementById('location-filter').value = '';
+                document.getElementById('rating-filter').value = '';
+                document.getElementById('min-price').value = '';
+                document.getElementById('max-price').value = '';
+                
+                const checkboxes = document.querySelectorAll('input[name="service"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                alert('تم إعادة تعيين جميع الفلاتر');
+            }
+            
+            // ترتيب النتائج
+            const sortSelect = document.getElementById('sort-by');
+            sortSelect.addEventListener('change', function() {
+                alert(`سيتم ترتيب النتائج بحسب: ${this.options[this.selectedIndex].text}`);
+                // في التطبيق الحقيقي، سيتم هنا إعادة ترتيب البيانات
+            });
+            
+            // الترقيم
+            const paginationItems = document.querySelectorAll('.pagination-item');
+            paginationItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (this.classList.contains('active')) return;
+                    
+                    // إزالة النشط من جميع العناصر
+                    paginationItems.forEach(i => i.classList.remove('active'));
+                    
+                    // إضافة النشط للعنصر المحدد
+                    this.classList.add('active');
+                    
+                    // محاكاة تغيير الصفحة
+                    if (!this.querySelector('i')) {
+                        alert(`سيتم الانتقال إلى الصفحة ${this.textContent}`);
+                    }
+                });
+            });
+            
+            // إضافة تأثيرات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // تطبيق تأثيرات الظهور على العناصر
+            const animatedElements = document.querySelectorAll('.provider-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
