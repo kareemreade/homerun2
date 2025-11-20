@@ -116,49 +116,66 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي */
+        /* الشريط العلوي - محسّن للهواتف */
         .top-bar {
             background-color: var(--primary);
             color: white;
             padding: 10px 0;
-            font-size: 0.9rem;
         }
 
         .top-bar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-wrap: nowrap;
+            gap: 15px;
         }
 
         .contact-info {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-wrap: nowrap;
+            gap: 20px;
+            align-items: center;
         }
 
-        .contact-info span {
+        .contact-info a {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .contact-info i {
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-links a {
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
+            padding: 6px;
+            border-radius: 4px;
         }
 
         .social-links a:hover {
             color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
         }
 
-        /* شريط التنقل */
+        /* شريط التنقل - محسّن للهواتف */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -175,7 +192,7 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
@@ -185,6 +202,7 @@
         .logo i {
             color: var(--secondary);
             margin-left: 8px;
+            font-size: 1.4rem;
         }
 
         .nav-links {
@@ -199,6 +217,7 @@
             position: relative;
             transition: var(--transition);
             white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -223,16 +242,22 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+        }
+
+        .nav-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             background: none;
             border: none;
             color: var(--primary);
+            padding: 5px;
         }
 
         /* إخفاء أزرار الجوال في الشاشات الكبيرة */
@@ -706,13 +731,49 @@
         }
 
         @media (max-width: 768px) {
+            /* تحسينات الشريط العلوي للهواتف */
+            .top-bar {
+                padding: 8px 0;
+            }
+            
             .top-bar-content {
-                justify-content: center;
-                text-align: center;
+                justify-content: space-between;
+                gap: 10px;
             }
             
             .contact-info {
-                justify-content: center;
+                gap: 15px;
+            }
+            
+            .contact-info a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .contact-info a span {
+                display: inline; /* إظهار النص على الشاشات المتوسطة */
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                padding: 6px;
+            }
+            
+            /* تحسينات شريط التنقل للهواتف */
+            .navbar-content {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                font-size: 1.2rem;
+                margin-left: 6px;
             }
             
             /* القائمة المنزلقة للهواتف */
@@ -763,6 +824,11 @@
             
             .nav-links.active .mobile-auth-buttons {
                 display: flex;
+            }
+            
+            .mobile-auth-buttons .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
             }
             
             /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
@@ -949,10 +1015,6 @@
                 font-size: 0.9rem;
             }
             
-            .logo {
-                font-size: 1.4rem;
-            }
-            
             .btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
@@ -960,6 +1022,28 @@
         }
 
         @media (max-width: 400px) {
+            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة جداً */
+            .top-bar {
+                padding: 6px 0;
+            }
+            
+            .contact-info {
+                gap: 10px;
+            }
+            
+            .contact-info a {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .contact-info a span {
+                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+            }
+            
+            .social-links {
+                gap: 8px;
+            }
+            
             .search-tags {
                 gap: 5px;
             }
@@ -1086,12 +1170,18 @@
     </style>
 </head>
 <body>
-    <!--  top-bar -->
+    <!-- الشريط العلوي المحسّن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
-                <span><i class="fas fa-phone"></i> 0123456789</span>
-                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+                <a href="tel:0123456789">
+                    <i class="fas fa-phone"></i>
+                    <span>0123456789</span>
+                </a>
+                <a href="mailto:info@homerun.com.eg">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@homerun.com.eg</span>
+                </a>
             </div>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1102,7 +1192,7 @@
         </div>
     </div>
 
-    <!-- navbar  -->
+    <!-- شريط التنقل المحسّن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -1137,6 +1227,7 @@
         </div>
     </nav>
 
+    <!-- باقي المحتوى -->
     <!-- search  -->
     <section class="search-section">
         <div class="container">
@@ -1388,8 +1479,6 @@
         </div>
     </section>
 
-  
-
     <!--footer-->
     <footer class="footer">
         <div class="container">
@@ -1468,68 +1557,6 @@
                     mobileMenuBtn.querySelector('i').classList.add('fa-bars');
                     mobileMenuBtn.querySelector('i').classList.remove('fa-times');
                 });
-            });
-            const searchInput = document.querySelector('.search-input');
-            const searchBtn = document.querySelector('.search-btn');
-            const searchTags = document.querySelectorAll('.search-tag');
-            
-            searchBtn.addEventListener('click', function() {
-                if (searchInput.value.trim() !== '') {
-                    alert(`سيتم البحث عن: ${searchInput.value}`);
-                }
-            });
-            
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    searchBtn.click();
-                }
-            });
-            
-            searchTags.forEach(tag => {
-                tag.addEventListener('click', function() {
-                    searchInput.value = this.textContent;
-                    searchBtn.click();
-                });
-            });
-                        const categoryCards = document.querySelectorAll('.category-card');
-            categoryCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const categoryName = this.querySelector('.category-name').textContent;
-                    alert(`سيتم عرض مقدمي الخدمات في: ${categoryName}`);
-                    // هنا يمكن إضافة كود التوجيه للصفحة المناسبة
-                });
-            });
-            const serviceBtns = document.querySelectorAll('.provider-card .btn');
-            serviceBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const providerName = this.closest('.provider-card').querySelector('.provider-name').textContent;
-                    alert(`سيتم طلب الخدمة من: ${providerName}`);
-                    // هنا يمكن إضافة كود طلب الخدمة
-                });
-            });
-            
-            // إضافة تأثيرات عند التمرير
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // تطبيق تأثيرات الظهور على العناصر
-            const animatedElements = document.querySelectorAll('.feature-card, .category-card, .provider-card, .step');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(el);
             });
         });
     </script>
