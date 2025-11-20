@@ -792,16 +792,40 @@
                 align-items: center;
             }
             
+            /* التعديل: عرض 2 بطاقة في كل سطر لقسم الميزات */
             .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
+            .feature-card {
+                padding: 20px 15px;
+            }
+            
+            .feature-icon {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            /* التعديل: عرض 3 فئات في كل سطر على الشاشات المتوسطة */
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            /* التعديل: عرض 2 بطاقة في كل سطر لقسم مقدمي الخدمات */
             .providers-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .provider-card {
+                padding: 0;
             }
             
             .steps {
@@ -849,17 +873,80 @@
                 border-radius: var(--border-radius);
             }
             
+            /* التعديل: عرض 2 بطاقة في كل سطر لقسم الميزات على الشاشات الصغيرة */
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .feature-card {
+                padding: 18px 12px;
+            }
+            
+            .feature-icon {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+            
+            .feature-title {
+                font-size: 1rem;
+            }
+            
+            .feature-card p {
+                font-size: 0.85rem;
+            }
+            
+            /* التعديل: عرض 2 فئة في كل سطر على الشاشات الصغيرة */
             .categories-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            /* التعديل: تحسين عرض مقدمي الخدمات على الشاشات الصغيرة */
+            .providers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .provider-header {
+                padding: 12px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .provider-avatar {
+                margin-left: 0;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .provider-body {
+                padding: 12px;
             }
             
             .provider-footer {
+                padding: 10px 12px;
                 flex-direction: column;
                 align-items: stretch;
+                gap: 8px;
             }
             
             .provider-footer .btn {
                 width: 100%;
+            }
+            
+            .provider-name {
+                font-size: 1rem;
+            }
+            
+            .provider-specialty {
+                font-size: 0.8rem;
+            }
+            
+            .provider-price {
+                font-size: 0.9rem;
             }
             
             .logo {
@@ -882,23 +969,70 @@
                 font-size: 0.8rem;
             }
             
+            /* التعديل: تحسين عرض الميزات على الشاشات الصغيرة جداً */
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
             .feature-card {
-                padding: 20px 15px;
+                padding: 15px 10px;
+            }
+            
+            .feature-icon {
+                font-size: 1.4rem;
+            }
+            
+            .feature-title {
+                font-size: 0.9rem;
+            }
+            
+            .feature-card p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+            
+            /* التعديل: تحسين عرض الفئات على الشاشات الصغيرة جداً */
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
             }
             
             .category-img {
                 height: 100px;
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
-            .provider-header {
-                flex-direction: column;
-                text-align: center;
+            .category-name {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+            
+            /* التعديل: تحسين عرض مقدمي الخدمات على الشاشات الصغيرة جداً */
+            .providers-grid {
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
             
-            .provider-avatar {
-                margin-left: 0;
+            .provider-header {
+                padding: 10px;
+            }
+            
+            .provider-body {
+                padding: 10px;
+            }
+            
+            .provider-footer {
+                padding: 8px 10px;
+            }
+            
+            .provider-services {
+                gap: 4px;
+            }
+            
+            .service-tag {
+                font-size: 0.7rem;
+                padding: 3px 6px;
             }
         }
 
@@ -1315,8 +1449,6 @@
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
-                    
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1337,8 +1469,6 @@
                     mobileMenuBtn.querySelector('i').classList.remove('fa-times');
                 });
             });
-            
-            // البحث عن الخدمات
             const searchInput = document.querySelector('.search-input');
             const searchBtn = document.querySelector('.search-btn');
             const searchTags = document.querySelectorAll('.search-tag');
@@ -1346,7 +1476,6 @@
             searchBtn.addEventListener('click', function() {
                 if (searchInput.value.trim() !== '') {
                     alert(`سيتم البحث عن: ${searchInput.value}`);
-                    // هنا يمكن إضافة كود البحث الفعلي
                 }
             });
             
@@ -1362,9 +1491,7 @@
                     searchBtn.click();
                 });
             });
-            
-            // اختيار الفئات
-            const categoryCards = document.querySelectorAll('.category-card');
+                        const categoryCards = document.querySelectorAll('.category-card');
             categoryCards.forEach(card => {
                 card.addEventListener('click', function() {
                     const categoryName = this.querySelector('.category-name').textContent;
@@ -1372,8 +1499,6 @@
                     // هنا يمكن إضافة كود التوجيه للصفحة المناسبة
                 });
             });
-            
-            // طلب الخدمة من مقدم الخدمة
             const serviceBtns = document.querySelectorAll('.provider-card .btn');
             serviceBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -1389,7 +1514,6 @@
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
-            
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
