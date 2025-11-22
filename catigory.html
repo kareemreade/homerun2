@@ -6,7 +6,6 @@
     <title>الفئات - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -113,7 +112,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسّن للهواتف */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -172,7 +170,6 @@
             transform: translateY(-1px);
         }
 
-        /* شريط التنقل - محسّن للهواتف */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -257,12 +254,10 @@
             padding: 5px;
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* صفحة الفئات */
         .categories-page {
             padding: 40px 0;
         }
@@ -334,7 +329,6 @@
             cursor: pointer;
         }
 
-        /* شبكة الفئات - التعديل الأساسي هنا */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -444,7 +438,6 @@
             transform: translateX(-5px);
         }
 
-        /* الفوتر */
         .footer {
             background-color: var(--dark);
             color: white;
@@ -498,7 +491,6 @@
             font-size: 0.9rem;
         }
 
-        /* تحسينات التجاوب للهواتف */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
@@ -537,7 +529,7 @@
             }
             
             .contact-info a span {
-                display: inline; /* إظهار النص على الشاشات المتوسطة */
+                display: inline; 
             }
             
             .social-links {
@@ -548,7 +540,6 @@
                 padding: 6px;
             }
             
-            /* تحسينات شريط التنقل للهواتف */
             .navbar-content {
                 padding: 12px 0;
             }
@@ -562,7 +553,6 @@
                 margin-left: 6px;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -598,7 +588,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -617,7 +606,6 @@
                 font-size: 1rem;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -631,7 +619,6 @@
                 font-size: 2rem;
             }
             
-            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -648,7 +635,6 @@
                 padding: 0 10px;
             }
             
-            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -701,7 +687,6 @@
                 padding: 10px 15px;
             }
             
-            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
             .top-bar {
                 padding: 6px 0;
             }
@@ -716,7 +701,7 @@
             }
             
             .contact-info a span {
-                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+                display: none; 
             }
             
             .social-links {
@@ -733,7 +718,6 @@
                 font-size: 1rem;
             }
             
-            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة جداً */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
@@ -780,20 +764,17 @@
                 font-size: 0.9rem;
             }
             
-            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة جداً */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
         }
 
-        /* تحسينات للوضع الأفقي في الهواتف */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 30px 0;
             }
             
-            /* تقليل ارتفاع الشريط العلوي في الوضع الأفقي */
             .top-bar {
                 padding: 4px 0;
             }
@@ -805,7 +786,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي المحسّن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -827,7 +807,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل المحسّن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -843,14 +822,12 @@
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
-                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
                 <li class="mobile-auth-buttons">
                     <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                     <a href="#" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -862,8 +839,7 @@
         </div>
     </nav>
 
-    <!-- باقي محتوى صفحة الفئات يبقى كما هو -->
-    <!-- رأس الصفحة -->
+
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">فئات الخدمات</h1>
@@ -871,9 +847,7 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة الفئات -->
     <div class="container categories-page">
-        <!-- أدوات التصفية والبحث -->
         <div class="categories-filter">
             <div class="filter-options">
                 <select class="filter-select">
@@ -901,9 +875,7 @@
             </div>
         </div>
 
-        <!-- شبكة الفئات -->
         <div class="categories-grid">
-            <!-- فئة السباكة -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -939,7 +911,6 @@
                 </div>
             </div>
 
-            <!-- فئة الكهرباء -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -975,7 +946,6 @@
                 </div>
             </div>
 
-            <!-- فئة النقاشة والديكور -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1011,7 +981,6 @@
                 </div>
             </div>
 
-            <!-- فئة النجارة -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1047,7 +1016,6 @@
                 </div>
             </div>
 
-            <!-- فئة التكييف والتبريد -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1083,7 +1051,6 @@
                 </div>
             </div>
 
-            <!-- فئة الإلكترونيات -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1119,7 +1086,6 @@
                 </div>
             </div>
 
-            <!-- فئة النظافة -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1155,7 +1121,6 @@
                 </div>
             </div>
 
-            <!-- فئة الحدائق -->
             <div class="category-card">
                 <div class="category-header">
                     <div class="category-icon">
@@ -1193,7 +1158,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1244,9 +1208,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1254,7 +1216,6 @@
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1266,7 +1227,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -1276,14 +1236,12 @@
                 });
             });
             
-            // البحث في الفئات
             const searchInput = document.querySelector('.search-input');
             const searchBtn = document.querySelector('.search-btn');
             
             searchBtn.addEventListener('click', function() {
                 if (searchInput.value.trim() !== '') {
                     alert(`سيتم البحث عن: ${searchInput.value}`);
-                    // هنا يمكن إضافة كود البحث الفعلي
                 }
             });
             
@@ -1293,26 +1251,21 @@
                 }
             });
             
-            // اختيار الفئة
             const categoryCards = document.querySelectorAll('.category-card');
             categoryCards.forEach(card => {
                 card.addEventListener('click', function() {
                     const categoryName = this.querySelector('.category-name').textContent;
                     alert(`سيتم عرض خدمات: ${categoryName}`);
-                    // هنا يمكن إضافة كود التوجيه لصفحة الخدمات
                 });
             });
             
-            // تصفية الفئات
             const filterSelects = document.querySelectorAll('.filter-select');
             filterSelects.forEach(select => {
                 select.addEventListener('change', function() {
                     alert(`تم التصفية بحسب: ${this.value}`);
-                    // هنا يمكن إضافة كود التصفية الفعلي
                 });
             });
             
-            // إضافة تأثيرات عند التمرير
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1327,7 +1280,6 @@
                 });
             }, observerOptions);
             
-            // تطبيق تأثيرات الظهور على العناصر
             const animatedElements = document.querySelectorAll('.category-card');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
