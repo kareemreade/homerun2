@@ -316,7 +316,7 @@
             line-height: 1.8;
         }
 
-        /* قسم قيمنا */
+        /* قسم قيمنا - التعديل الأساسي هنا */
         .values-section {
             background: white;
             border-radius: var(--border-radius);
@@ -473,14 +473,14 @@
             left: -10px;
         }
 
-        /* قسم فريق العمل */
+        /* قسم فريق العمل - التعديل الأساسي هنا */
         .team-section {
             margin-bottom: 60px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
@@ -803,6 +803,18 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            /* التعديل الأساسي: جعل فريق العمل يعرض عضوين في السطر في الشاشات المتوسطة */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            /* التعديل الأساسي: جعل القيم تعرض عنصرين في السطر في الشاشات المتوسطة */
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -814,12 +826,72 @@
                 grid-template-columns: 1fr;
             }
             
-            .values-grid {
-                grid-template-columns: 1fr;
+            /* التعديل الأساسي: جعل فريق العمل يعرض عضوين في السطر في الشاشات الصغيرة */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
-            .team-grid {
-                grid-template-columns: 1fr;
+            /* التعديل الأساسي: جعل القيم تعرض عنصرين في السطر في الشاشات الصغيرة */
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .team-member {
+                min-height: 320px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .member-photo {
+                height: 150px;
+                font-size: 3rem;
+            }
+            
+            .member-info {
+                padding: 15px 12px;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            .member-name {
+                font-size: 1.1rem;
+            }
+            
+            .member-role {
+                font-size: 0.9rem;
+            }
+            
+            .member-bio {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .value-card {
+                padding: 20px 15px;
+                min-height: 220px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            .value-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .value-title {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .value-description {
+                font-size: 0.85rem;
             }
             
             /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
@@ -852,6 +924,64 @@
             
             .page-subtitle {
                 font-size: 1rem;
+            }
+            
+            /* تحسينات إضافية لفريق العمل في الشاشات الصغيرة جداً */
+            .team-grid {
+                gap: 12px;
+            }
+            
+            .member-photo {
+                height: 140px;
+                font-size: 2.8rem;
+            }
+            
+            .member-info {
+                padding: 12px 10px;
+            }
+            
+            .member-name {
+                font-size: 1rem;
+            }
+            
+            .member-role {
+                font-size: 0.85rem;
+            }
+            
+            .member-bio {
+                font-size: 0.75rem;
+            }
+            
+            .member-social {
+                gap: 10px;
+            }
+            
+            .member-social a {
+                font-size: 0.9rem;
+            }
+            
+            /* تحسينات إضافية للقيم في الشاشات الصغيرة جداً */
+            .values-grid {
+                gap: 12px;
+            }
+            
+            .value-card {
+                padding: 18px 12px;
+                min-height: 200px;
+            }
+            
+            .value-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+            
+            .value-title {
+                font-size: 1rem;
+            }
+            
+            .value-description {
+                font-size: 0.8rem;
             }
         }
 
