@@ -6,7 +6,6 @@
     <title>كيف تعمل - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -113,7 +112,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسن بشكل كامل */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -173,7 +171,6 @@
             transform: translateY(-1px);
         }
 
-        /* شريط التنقل - محسن بشكل كامل */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -258,12 +255,10 @@
             padding: 5px;
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* رأس الصفحة */
         .page-header {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -283,12 +278,10 @@
             margin: 0 auto;
         }
 
-        /* محتوى صفحة كيف تعمل */
         .how-it-works-page {
             padding: 40px 0;
         }
 
-        /* اختيار الدور */
         .role-selection {
             text-align: center;
             margin-bottom: 60px;
@@ -416,7 +409,6 @@
             margin: 0 auto;
         }
 
-        /* قسم الأسئلة الشائعة */
         .faq-section {
             background: white;
             border-radius: var(--border-radius);
@@ -467,7 +459,6 @@
             transform: rotate(180deg);
         }
 
-        /* قسم الفيديو التوضيحي */
         .video-section {
             text-align: center;
             margin-bottom: 60px;
@@ -481,7 +472,7 @@
             box-shadow: var(--box-shadow);
             background: var(--dark);
             position: relative;
-            padding-top: 56.25%; /* نسبة 16:9 */
+            padding-top: 56.25%; 
         }
 
         .video-placeholder {
@@ -509,7 +500,6 @@
             transform: scale(1.1);
         }
 
-        /* قسم البدء الآن */
         .get-started-section {
             background: linear-gradient(135deg, var(--secondary) 0%, #ff8c00 100%);
             color: white;
@@ -539,7 +529,6 @@
             flex-wrap: wrap;
         }
 
-        /* الفوتر */
         .footer {
             background-color: var(--dark);
             color: white;
@@ -594,7 +583,6 @@
             font-size: 0.9rem;
         }
 
-        /* تحسينات التجاوب للهواتف */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
@@ -628,7 +616,6 @@
         }
 
         @media (max-width: 768px) {
-            /* تحسينات الشريط العلوي للهواتف */
             .top-bar {
                 padding: 8px 0;
             }
@@ -648,7 +635,7 @@
             }
             
             .contact-info a span {
-                display: inline; /* إظهار النص على الشاشات المتوسطة */
+                display: inline; 
             }
             
             .social-links {
@@ -659,7 +646,6 @@
                 padding: 6px;
             }
             
-            /* تحسينات شريط التنقل للهواتف */
             .navbar-content {
                 padding: 12px 0;
             }
@@ -673,7 +659,6 @@
                 margin-left: 6px;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -709,7 +694,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -728,7 +712,6 @@
                 font-size: 1rem;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -773,7 +756,6 @@
                 margin: 0 auto;
             }
             
-            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
             .top-bar {
                 padding: 6px 0;
             }
@@ -788,7 +770,7 @@
             }
             
             .contact-info a span {
-                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+                display: none; 
             }
             
             .social-links {
@@ -816,13 +798,11 @@
             }
         }
 
-        /* تحسينات للوضع الأفقي في الهواتف */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 30px 0;
             }
             
-            /* تقليل ارتفاع الشريط العلوي في الوضع الأفقي */
             .top-bar {
                 padding: 4px 0;
             }
@@ -834,7 +814,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي المحسن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -856,7 +835,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل المحسن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -872,14 +850,12 @@
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
-                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
                 <li class="mobile-auth-buttons">
                     <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                     <a href="#" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -891,7 +867,6 @@
         </div>
     </nav>
 
-    <!-- رأس الصفحة -->
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">كيف تعمل منصة Homerun</h1>
@@ -899,9 +874,7 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة كيف تعمل -->
     <div class="container how-it-works-page">
-        <!-- اختيار الدور -->
         <div class="role-selection">
             <h2 class="section-title">اختر دورك</h2>
             <p>اختر الدور المناسب لك لترى آلية العمل الخاصة بك على المنصة</p>
@@ -925,7 +898,6 @@
             </div>
         </div>
 
-        <!-- خطوات العمل للعميل -->
         <div class="steps-section" id="client-steps">
             <h2 class="section-title">كيف تطلب خدمة في 4 خطوات بسيطة</h2>
             
@@ -980,7 +952,6 @@
             </div>
         </div>
 
-        <!-- خطوات العمل لمقدم الخدمة -->
         <div class="steps-section" id="provider-steps" style="display: none;">
             <h2 class="section-title">كيف تقدم خدماتك في 4 خطوات بسيطة</h2>
             
@@ -1035,7 +1006,6 @@
             </div>
         </div>
 
-        <!-- قسم الأسئلة الشائعة -->
         <div class="faq-section">
             <h2 class="section-title">الأسئلة الشائعة</h2>
             
@@ -1092,7 +1062,6 @@
             </div>
         </div>
 
-        <!-- قسم البدء الآن -->
         <div class="get-started-section">
             <h2 class="get-started-title">مستعد للبدء؟</h2>
             <p class="get-started-description">انضم إلى آلاف العملاء والحرفيين على منصتنا وابدأ رحلتك اليوم</p>
@@ -1108,7 +1077,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1158,9 +1126,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1168,7 +1134,6 @@
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1180,7 +1145,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -1190,20 +1154,16 @@
                 });
             });
             
-            // تبديل الأدوار
             const roleTabs = document.querySelectorAll('.role-tab');
             const clientSteps = document.getElementById('client-steps');
             const providerSteps = document.getElementById('provider-steps');
             
             roleTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    // إزالة النشط من جميع الألسنة
                     roleTabs.forEach(t => t.classList.remove('active'));
                     
-                    // إضافة النشط للسان المحدد
                     this.classList.add('active');
                     
-                    // إظهار الخطوات المناسبة
                     const role = this.getAttribute('data-role');
                     if (role === 'client') {
                         clientSteps.style.display = 'block';
@@ -1215,26 +1175,22 @@
                 });
             });
             
-            // الأسئلة الشائعة
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 
                 question.addEventListener('click', function() {
-                    // إغلاق جميع العناصر الأخرى
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
                     
-                    // تبديل العنصر الحالي
                     item.classList.toggle('active');
                 });
             });
             
-            // تشغيل الفيديو
             const videoPlaceholder = document.querySelector('.video-placeholder');
             
             videoPlaceholder.addEventListener('click', function() {
@@ -1257,7 +1213,6 @@
                 });
             }, observerOptions);
             
-            // تطبيق تأثيرات الظهور على العناصر
             const animatedElements = document.querySelectorAll('.step, .faq-item, .video-container');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
