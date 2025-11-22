@@ -109,32 +109,37 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي */
+        /* الشريط العلوي - محسن */
         .top-bar {
             background-color: var(--primary);
             color: white;
             padding: 8px 0;
             font-size: 0.9rem;
+            height: 40px;
+            display: flex;
+            align-items: center;
         }
 
         .top-bar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .contact-info {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 15px;
+            align-items: center;
         }
 
         .contact-info span {
             display: flex;
             align-items: center;
             gap: 5px;
+            white-space: nowrap;
         }
 
         .social-links {
@@ -151,24 +156,28 @@
             color: var(--secondary);
         }
 
-        /* شريط التنقل */
+        /* شريط التنقل - محسن */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
 
         .navbar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 0;
+            height: 100%;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
@@ -553,13 +562,35 @@
         }
 
         @media (max-width: 768px) {
-            .top-bar-content {
-                justify-content: center;
-                text-align: center;
+            /* الشريط العلوي - تحسينات للهواتف */
+            .top-bar {
+                padding: 5px 0;
+                height: 35px;
             }
             
-            .contact-info {
-                justify-content: center;
+            .top-bar-content {
+                justify-content: space-between;
+            }
+            
+            .contact-info span .text {
+                display: none;
+            }
+            
+            .contact-info span {
+                gap: 0;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            /* شريط التنقل - تحسينات للهواتف */
+            .navbar {
+                height: 60px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
             }
             
             /* القائمة المنزلقة للهواتف */
@@ -659,12 +690,22 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
+    <!-- الشريط العلوي - محسن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
-                <span><i class="fas fa-phone"></i> 0123456789</span>
-                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+                <span>
+                    <a href="tel:0123456789">
+                        <i class="fas fa-phone"></i>
+                        <span class="text">0123456789</span>
+                    </a>
+                </span>
+                <span>
+                    <a href="mailto:info@homerun.com.eg">
+                        <i class="fas fa-envelope"></i>
+                        <span class="text">info@homerun.com.eg</span>
+                    </a>
+                </span>
             </div>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -675,7 +716,7 @@
         </div>
     </div>
 
-    <!-- شريط التنقل -->
+    <!-- شريط التنقل - محسن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
