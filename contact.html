@@ -6,7 +6,6 @@
     <title>اتصل بنا - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -109,7 +108,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسن */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -161,7 +159,6 @@
             color: var(--secondary);
         }
 
-        /* شريط التنقل - محسن */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -242,12 +239,10 @@
             color: var(--primary);
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* رأس الصفحة */
         .page-header {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -267,12 +262,10 @@
             margin: 0 auto;
         }
 
-        /* محتوى صفحة اتصل بنا */
         .contact-page {
             padding: 40px 0;
         }
 
-        /* قسم معلومات الاتصال */
         .contact-info-section {
             margin-bottom: 60px;
         }
@@ -336,7 +329,6 @@
             color: var(--secondary);
         }
 
-        /* قسم نموذج الاتصال */
         .contact-form-section {
             margin-bottom: 60px;
         }
@@ -394,7 +386,6 @@
             gap: 20px;
         }
 
-        /* قسم الخريطة */
         .map-section {
             margin-bottom: 60px;
         }
@@ -422,7 +413,6 @@
             color: var(--primary);
         }
 
-        /* قسم الأسئلة الشائعة للاتصال */
         .contact-faq {
             background: white;
             border-radius: var(--border-radius);
@@ -473,7 +463,6 @@
             transform: rotate(180deg);
         }
 
-        /* قسم ساعات العمل */
         .hours-section {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -505,7 +494,6 @@
             opacity: 0.9;
         }
 
-        /* الفوتر */
         .footer {
             background-color: var(--dark);
             color: white;
@@ -559,7 +547,6 @@
             font-size: 0.9rem;
         }
 
-        /* التجاوب */
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -567,7 +554,6 @@
         }
 
         @media (max-width: 768px) {
-            /* الشريط العلوي - تحسينات للهواتف */
             .top-bar {
                 padding: 5px 0;
                 height: 35px;
@@ -589,7 +575,6 @@
                 gap: 10px;
             }
             
-            /* شريط التنقل - تحسينات للهواتف */
             .navbar {
                 height: 60px;
             }
@@ -598,7 +583,6 @@
                 font-size: 1.3rem;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -634,7 +618,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -648,7 +631,6 @@
                 display: flex;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -695,7 +677,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي - محسن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -717,7 +698,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل - محسن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -733,14 +713,12 @@
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
-                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
                 <li class="mobile-auth-buttons">
                     <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                     <a href="#" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -752,7 +730,6 @@
         </div>
     </nav>
 
-    <!-- رأس الصفحة -->
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">اتصل بنا</h1>
@@ -760,9 +737,7 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة اتصل بنا -->
     <div class="container contact-page">
-        <!-- قسم معلومات الاتصال -->
         <div class="contact-info-section">
             <h2 class="section-title">طرق التواصل معنا</h2>
             
@@ -808,7 +783,6 @@
             </div>
         </div>
 
-        <!-- قسم نموذج الاتصال -->
         <div class="contact-form-section">
             <div class="form-container">
                 <h2 class="form-title">أرسل رسالة</h2>
@@ -854,7 +828,6 @@
             </div>
         </div>
 
-        <!-- قسم الخريطة -->
         <div class="map-section">
             <h2 class="section-title">موقعنا على الخريطة</h2>
             
@@ -868,7 +841,6 @@
             </div>
         </div>
 
-        <!-- قسم الأسئلة الشائعة للاتصال -->
         <div class="contact-faq">
             <h2 class="section-title">أسئلة شائعة حول الاتصال</h2>
             
@@ -915,7 +887,6 @@
             </div>
         </div>
 
-        <!-- قسم ساعات العمل -->
         <div class="hours-section">
             <h2 class="section-title" style="color: white;">ساعات العمل</h2>
             
@@ -943,7 +914,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -993,9 +963,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1003,7 +971,6 @@
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1015,7 +982,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -1025,13 +991,11 @@
                 });
             });
             
-            // نموذج الاتصال
             const contactForm = document.getElementById('contact-form');
             
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // جمع بيانات النموذج
                 const formData = {
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
@@ -1040,46 +1004,37 @@
                     message: document.getElementById('message').value
                 };
                 
-                // هنا يمكن إضافة كود إرسال البيانات إلى الخادم
                 console.log('بيانات النموذج:', formData);
                 
-                // عرض رسالة نجاح
                 alert('شكراً لك! تم استلام رسالتك بنجاح وسنقوم بالرد عليك في أقرب وقت ممكن.');
                 
-                // إعادة تعيين النموذج
                 contactForm.reset();
             });
             
-            // الأسئلة الشائعة
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 
                 question.addEventListener('click', function() {
-                    // إغلاق جميع العناصر الأخرى
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
                     
-                    // تبديل العنصر الحالي
                     item.classList.toggle('active');
                 });
             });
             
-            // زر فتح الخريطة
             const mapButton = document.querySelector('.map-container .btn');
             
             mapButton.addEventListener('click', function() {
-                // في التطبيق الحقيقي، سيتم هنا فتح خرائط جوجل
                 const address = "123 شارع التحرير، الدقي، الجيزة، مصر";
                 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
                 window.open(mapsUrl, '_blank');
             });
             
-            // إضافة تأثيرات عند التمرير
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1094,7 +1049,6 @@
                 });
             }, observerOptions);
             
-            // تطبيق تأثيرات الظهور على العناصر
             const animatedElements = document.querySelectorAll('.contact-card, .form-container, .map-container, .faq-item');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
