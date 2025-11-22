@@ -131,15 +131,20 @@
         .contact-info {
             display: flex;
             flex-wrap: nowrap;
-            gap: 15px;
+            gap: 20px;
             align-items: center;
         }
 
-        .contact-info span {
+        .contact-info a {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary);
         }
 
         .social-links {
@@ -572,11 +577,11 @@
                 justify-content: space-between;
             }
             
-            .contact-info span .text {
+            .contact-info a span {
                 display: none;
             }
             
-            .contact-info span {
+            .contact-info a {
                 gap: 0;
             }
             
@@ -694,18 +699,14 @@
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
-                <span>
-                    <a href="tel:0123456789">
-                        <i class="fas fa-phone"></i>
-                        <span class="text">0123456789</span>
-                    </a>
-                </span>
-                <span>
-                    <a href="mailto:info@homerun.com.eg">
-                        <i class="fas fa-envelope"></i>
-                        <span class="text">info@homerun.com.eg</span>
-                    </a>
-                </span>
+                <a href="tel:0123456789">
+                    <i class="fas fa-phone"></i>
+                    <span>0123456789</span>
+                </a>
+                <a href="mailto:info@homerun.com.eg">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@homerun.com.eg</span>
+                </a>
             </div>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
