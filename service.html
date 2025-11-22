@@ -6,7 +6,6 @@
     <title>مقدمو الخدمات - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -113,7 +112,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسّن للتجاوب */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -173,7 +171,6 @@
             transform: translateY(-1px);
         }
 
-        /* شريط التنقل - محسّن للتجاوب */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -258,12 +255,10 @@
             padding: 5px;
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* رأس الصفحة */
         .page-header {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -285,12 +280,10 @@
             margin: 0 auto;
         }
 
-        /* محتوى صفحة مقدمي الخدمات */
         .providers-page {
             padding: 40px 0;
         }
 
-        /* أدوات التصفية */
         .providers-filter {
             background: white;
             border-radius: var(--border-radius);
@@ -369,7 +362,6 @@
             margin-top: 20px;
         }
 
-        /* معلومات النتائج */
         .results-info {
             display: flex;
             justify-content: space-between;
@@ -390,7 +382,6 @@
             gap: 10px;
         }
 
-        /* شبكة مقدمي الخدمات */
         .providers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -555,7 +546,6 @@
             display: block;
         }
 
-        /* الترقيم */
         .pagination {
             display: flex;
             justify-content: center;
@@ -587,7 +577,6 @@
             background: var(--light);
         }
 
-        /* الفوتر */
         .footer {
             background-color: var(--dark);
             color: white;
@@ -642,7 +631,6 @@
             font-size: 0.9rem;
         }
 
-        /* تحسينات التجاوب للهواتف */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
@@ -660,7 +648,6 @@
         }
 
         @media (max-width: 768px) {
-            /* تحسينات الشريط العلوي للهواتف */
             .top-bar {
                 padding: 8px 0;
             }
@@ -680,7 +667,7 @@
             }
             
             .contact-info a span {
-                display: inline; /* إظهار النص على الشاشات المتوسطة */
+                display: inline;
             }
             
             .social-links {
@@ -691,7 +678,6 @@
                 padding: 6px;
             }
             
-            /* تحسينات شريط التنقل للهواتف */
             .navbar-content {
                 padding: 12px 0;
             }
@@ -705,7 +691,6 @@
                 margin-left: 6px;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -741,7 +726,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -760,7 +744,6 @@
                 font-size: 1rem;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -813,7 +796,6 @@
                 flex-direction: column;
             }
             
-            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
             .top-bar {
                 padding: 6px 0;
             }
@@ -828,7 +810,7 @@
             }
             
             .contact-info a span {
-                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+                display: none; 
             }
             
             .social-links {
@@ -856,13 +838,11 @@
             }
         }
 
-        /* تحسينات للوضع الأفقي في الهواتف */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 30px 0;
             }
             
-            /* تقليل ارتفاع الشريط العلوي في الوضع الأفقي */
             .top-bar {
                 padding: 4px 0;
             }
@@ -874,7 +854,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي المحسّن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -896,7 +875,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل المحسّن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -912,14 +890,12 @@
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
-                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
                 <li class="mobile-auth-buttons">
                     <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                     <a href="#" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -931,7 +907,6 @@
         </div>
     </nav>
 
-    <!-- رأس الصفحة -->
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">مقدمو الخدمات</h1>
@@ -939,9 +914,7 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة مقدمي الخدمات -->
     <div class="container providers-page">
-        <!-- أدوات التصفية -->
         <div class="providers-filter">
             <div class="filter-header">
                 <h2 class="filter-title">تصفية النتائج</h2>
@@ -1021,7 +994,6 @@
             </div>
         </div>
 
-        <!-- معلومات النتائج -->
         <div class="results-info">
             <div class="results-count">عرض 1-8 من 42 مقدم خدمة</div>
             <div class="sort-options">
@@ -1036,9 +1008,7 @@
             </div>
         </div>
 
-        <!-- شبكة مقدمي الخدمات -->
         <div class="providers-grid">
-            <!-- مقدم خدمة 1 -->
             <div class="provider-card">
                 <div class="provider-badge">مميز</div>
                 <div class="provider-header">
@@ -1091,7 +1061,6 @@
                 </div>
             </div>
 
-            <!-- مقدم خدمة 2 -->
             <div class="provider-card">
                 <div class="provider-header">
                     <div class="provider-avatar">
@@ -1142,7 +1111,6 @@
                 </div>
             </div>
 
-            <!-- مقدم خدمة 3 -->
             <div class="provider-card">
                 <div class="provider-badge">الأعلى تقييماً</div>
                 <div class="provider-header">
@@ -1194,7 +1162,6 @@
                 </div>
             </div>
 
-            <!-- مقدم خدمة 4 -->
             <div class="provider-card">
                 <div class="provider-header">
                     <div class="provider-avatar">
@@ -1246,7 +1213,6 @@
             </div>
         </div>
 
-        <!-- الترقيم -->
         <div class="pagination">
             <div class="pagination-item"><i class="fas fa-chevron-right"></i></div>
             <div class="pagination-item active">1</div>
@@ -1258,7 +1224,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1308,9 +1273,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1318,7 +1281,6 @@
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1330,7 +1292,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -1340,7 +1301,6 @@
                 });
             });
             
-            // تطبيق الفلاتر
             const applyFiltersBtn = document.getElementById('apply-filters');
             const resetFiltersBtn = document.getElementById('reset-filters');
             const filterReset = document.querySelector('.filter-reset');
@@ -1352,9 +1312,7 @@
                 const minPrice = document.getElementById('min-price').value;
                 const maxPrice = document.getElementById('max-price').value;
                 
-                // محاكاة تطبيق الفلاتر
                 alert('تم تطبيق الفلاتر المحددة');
-                // في التطبيق الحقيقي، سيتم هنا إرسال طلب AJAX أو تصفية البيانات محلياً
             });
             
             resetFiltersBtn.addEventListener('click', resetAllFilters);
@@ -1375,33 +1333,26 @@
                 alert('تم إعادة تعيين جميع الفلاتر');
             }
             
-            // ترتيب النتائج
             const sortSelect = document.getElementById('sort-by');
             sortSelect.addEventListener('change', function() {
                 alert(`سيتم ترتيب النتائج بحسب: ${this.options[this.selectedIndex].text}`);
-                // في التطبيق الحقيقي، سيتم هنا إعادة ترتيب البيانات
             });
             
-            // الترقيم
             const paginationItems = document.querySelectorAll('.pagination-item');
             paginationItems.forEach(item => {
                 item.addEventListener('click', function() {
                     if (this.classList.contains('active')) return;
                     
-                    // إزالة النشط من جميع العناصر
                     paginationItems.forEach(i => i.classList.remove('active'));
                     
-                    // إضافة النشط للعنصر المحدد
                     this.classList.add('active');
                     
-                    // محاكاة تغيير الصفحة
                     if (!this.querySelector('i')) {
                         alert(`سيتم الانتقال إلى الصفحة ${this.textContent}`);
                     }
                 });
             });
             
-            // إضافة تأثيرات عند التمرير
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1416,7 +1367,6 @@
                 });
             }, observerOptions);
             
-            // تطبيق تأثيرات الظهور على العناصر
             const animatedElements = document.querySelectorAll('.provider-card');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
