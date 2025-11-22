@@ -6,7 +6,6 @@
     <title>عن المنصة - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -103,7 +102,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسن بشكل كامل */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -163,7 +161,6 @@
             transform: translateY(-1px);
         }
 
-        /* شريط التنقل - محسن بشكل كامل */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -248,12 +245,10 @@
             padding: 5px;
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* رأس الصفحة */
         .page-header {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -273,12 +268,10 @@
             margin: 0 auto;
         }
 
-        /* محتوى صفحة عن المنصة */
         .about-page {
             padding: 40px 0;
         }
 
-        /* قسم مهمتنا ورؤيتنا */
         .mission-vision {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -316,7 +309,6 @@
             line-height: 1.8;
         }
 
-        /* قسم قيمنا - التعديل الأساسي هنا */
         .values-section {
             background: white;
             border-radius: var(--border-radius);
@@ -372,7 +364,6 @@
             color: var(--gray);
         }
 
-        /* قسم تاريخنا */
         .history-section {
             margin-bottom: 60px;
         }
@@ -473,7 +464,6 @@
             left: -10px;
         }
 
-        /* قسم فريق العمل - التعديل الأساسي هنا */
         .team-section {
             margin-bottom: 60px;
         }
@@ -544,7 +534,6 @@
             color: var(--primary);
         }
 
-        /* قسم الإحصائيات */
         .stats-section {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -575,7 +564,6 @@
             opacity: 0.9;
         }
 
-        /* قسم الشركاء */
         .partners-section {
             margin-bottom: 60px;
         }
@@ -657,7 +645,6 @@
             font-size: 0.9rem;
         }
 
-        /* تحسينات التجاوب للهواتف */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
@@ -682,7 +669,6 @@
         }
 
         @media (max-width: 768px) {
-            /* تحسينات الشريط العلوي للهواتف */
             .top-bar {
                 padding: 8px 0;
             }
@@ -702,7 +688,7 @@
             }
             
             .contact-info a span {
-                display: inline; /* إظهار النص على الشاشات المتوسطة */
+                display: inline; 
             }
             
             .social-links {
@@ -713,7 +699,6 @@
                 padding: 6px;
             }
             
-            /* تحسينات شريط التنقل للهواتف */
             .navbar-content {
                 padding: 12px 0;
             }
@@ -727,7 +712,6 @@
                 margin-left: 6px;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -763,7 +747,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -782,7 +765,6 @@
                 font-size: 1rem;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -804,13 +786,11 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            /* التعديل الأساسي: جعل فريق العمل يعرض عضوين في السطر في الشاشات المتوسطة */
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
             
-            /* التعديل الأساسي: جعل القيم تعرض عنصرين في السطر في الشاشات المتوسطة */
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
@@ -826,13 +806,11 @@
                 grid-template-columns: 1fr;
             }
             
-            /* التعديل الأساسي: جعل فريق العمل يعرض عضوين في السطر في الشاشات الصغيرة */
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             
-            /* التعديل الأساسي: جعل القيم تعرض عنصرين في السطر في الشاشات الصغيرة */
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -894,7 +872,6 @@
                 font-size: 0.85rem;
             }
             
-            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
             .top-bar {
                 padding: 6px 0;
             }
@@ -909,7 +886,7 @@
             }
             
             .contact-info a span {
-                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+                display: none; 
             }
             
             .social-links {
@@ -926,7 +903,6 @@
                 font-size: 1rem;
             }
             
-            /* تحسينات إضافية لفريق العمل في الشاشات الصغيرة جداً */
             .team-grid {
                 gap: 12px;
             }
@@ -960,7 +936,6 @@
                 font-size: 0.9rem;
             }
             
-            /* تحسينات إضافية للقيم في الشاشات الصغيرة جداً */
             .values-grid {
                 gap: 12px;
             }
@@ -995,13 +970,11 @@
             }
         }
 
-        /* تحسينات للوضع الأفقي في الهواتف */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 30px 0;
             }
             
-            /* تقليل ارتفاع الشريط العلوي في الوضع الأفقي */
             .top-bar {
                 padding: 4px 0;
             }
@@ -1013,7 +986,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي المحسن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -1035,7 +1007,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل المحسن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -1051,14 +1022,12 @@
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
-                <!-- أزرار التسجيل داخل القائمة المنزلقة للهواتف فقط -->
                 <li class="mobile-auth-buttons">
                     <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                     <a href="#" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -1070,7 +1039,6 @@
         </div>
     </nav>
 
-    <!-- رأس الصفحة -->
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">عن منصة Homerun</h1>
@@ -1078,9 +1046,7 @@
         </div>
     </div>
 
-    <!-- محتوى صفحة عن المنصة -->
     <div class="container about-page">
-        <!-- قسم مهمتنا ورؤيتنا -->
         <div class="mission-vision">
             <div class="mission-card">
                 <div class="mission-icon">
@@ -1138,7 +1104,6 @@
             </div>
         </div>
 
-        <!-- قسم تاريخنا -->
         <div class="history-section">
             <h2 class="section-title">رحلة تطورنا</h2>
             
@@ -1181,7 +1146,6 @@
             </div>
         </div>
 
-        <!-- قسم فريق العمل -->
         <div class="team-section">
             <h2 class="section-title">فريق العمل</h2>
             
@@ -1248,7 +1212,6 @@
             </div>
         </div>
 
-        <!-- قسم الإحصائيات -->
         <div class="stats-section">
             <div class="container">
                 <h2 class="section-title" style="color: white;">أرقامنا تتحدث</h2>
@@ -1277,7 +1240,6 @@
             </div>
         </div>
 
-        <!-- قسم الشركاء -->
         <div class="partners-section">
             <h2 class="section-title">شركاؤنا</h2>
             
@@ -1301,7 +1263,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1351,9 +1312,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1361,7 +1320,6 @@
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     
-                    // تغيير الأيقونة بين القائمة والإغلاق
                     const icon = this.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -1373,7 +1331,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -1383,7 +1340,6 @@
                 });
             });
             
-            // عدادات الإحصائيات المتحركة
             const statNumbers = document.querySelectorAll('.stat-number');
             
             function animateNumbers() {
@@ -1404,7 +1360,6 @@
                 });
             }
             
-            // تفعيل العدادات عند التمرير للقسم
             const statsSection = document.querySelector('.stats-section');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1417,7 +1372,6 @@
             
             observer.observe(statsSection);
             
-            // إضافة تأثيرات عند التمرير
             const scrollObserverOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1432,7 +1386,6 @@
                 });
             }, scrollObserverOptions);
             
-            // تطبيق تأثيرات الظهور على العناصر
             const animatedElements = document.querySelectorAll('.mission-card, .vision-card, .value-card, .timeline-item, .team-member');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
