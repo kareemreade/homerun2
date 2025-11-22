@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسجيل كحرفي - Homerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f73;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .contact-info a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+        }
+
+        .mobile-auth-buttons {
+            display: none;
+        }
+
+        .craftsman-registration {
+            padding: 80px 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .registration-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .registration-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .registration-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .registration-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .registration-steps {
+            display: flex;
+            background: #f8f9fa;
+            padding: 0;
+        }
+
+        .step {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .step.active::after {
+            transform: scaleX(1);
+        }
+
+        .registration-form-container {
+            padding: 40px;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .file-upload {
+            border: 2px dashed #ddd;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .file-upload i {
+            font-size: 2.5rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .file-upload p {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .membership-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .membership-card {
+            border: 2px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .membership-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .membership-card.selected {
+            border-color: var(--primary);
+            background: rgba(44, 90, 160, 0.05);
+        }
+
+        .membership-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .membership-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .membership-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .membership-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .membership-features {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .membership-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .membership-features li:last-child {
+            border-bottom: none;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .admin-approval-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .admin-approval-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-approval-section p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .status-indicator.pending {
+            color: #856404;
+            background: #fff3cd;
+        }
+
+        .status-indicator.approved {
+            color: #155724;
+            background: #d4edda;
+        }
+
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .membership-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 5px 0;
+                height: 35px;
+            }
+            
+            .top-bar-content {
+                justify-content: space-between;
+            }
+            
+            .contact-info a span {
+                display: none;
+            }
+            
+            .contact-info a {
+                gap: 0;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .navbar {
+                height: 60px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 25px 25px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 999;
+                align-items: stretch;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            .mobile-auth-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid var(--light);
+            }
+            
+            .nav-links.active .mobile-auth-buttons {
+                display: flex;
+            }
+            
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .craftsman-registration {
+                padding: 40px 0;
+            }
+            
+            .registration-form-container {
+                padding: 25px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .registration-steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                border-bottom: 1px solid #e9ecef;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .registration-header {
+                padding: 20px;
+            }
+            
+            .registration-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-navigation .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <a href="tel:0123456789">
+                    <i class="fas fa-phone"></i>
+                    <span>0123456789</span>
+                </a>
+                <a href="mailto:info@homerun.com.eg">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@homerun.com.eg</span>
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tools"></i>
+                Homerun
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="catigory.html">الفئات</a></li>
+                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="howwork.html">كيف تعمل</a></li>
+                <li><a href="about.html">عن المنصة</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                
+                <li class="mobile-auth-buttons">
+                    <a href="prosignup.html" class="btn btn-outline">تسجيل كحرفي</a>
+                    <a href="login.html" class="btn btn-primary">تسجيل الدخول</a>
+                </div>
+                </li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="prosignup.html" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="login.html" class="btn btn-primary">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="craftsman-registration">
+        <div class="container">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h1>التسجيل كحرفي في منصة Homerun</h1>
+                    <p>انضم إلى منصة Homerun لعرض خدماتك وزيادة دخلك</p>
+                </div>
+                
+                <div class="registration-steps">
+                    <div class="step active" data-step="1">المعلومات الشخصية</div>
+                    <div class="step" data-step="2">المعلومات المهنية</div>
+                    <div class="step" data-step="3">اختيار العضوية</div>
+                    <div class="step" data-step="4">المراجعة والتأكيد</div>
+                </div>
+                
+                <div class="registration-form-container">
+                    <div class="form-section active" id="step-1">
+                        <h2 class="form-title">المعلومات الشخصية</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="full-name" class="form-label">الاسم الكامل</label>
+                                <input type="text" id="full-name" class="form-control" placeholder="أدخل اسمك الكامل" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">البريد الإلكتروني</label>
+                                <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">رقم الهاتف</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="national-id" class="form-label">رقم البطاقة الشخصية</label>
+                                <input type="text" id="national-id" class="form-control" placeholder="أدخل رقم البطاقة الشخصية" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password" class="form-label">كلمة المرور</label>
+                                <input type="password" id="password" class="form-control" placeholder="أنشئ كلمة مرور قوية" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirm-password" class="form-label">تأكيد كلمة المرور</label>
+                                <input type="password" id="confirm-password" class="form-control" placeholder="أعد إدخال كلمة المرور" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <div></div> 
+                            <button type="button" class="btn btn-primary next-step" data-next="2">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section" id="step-2">
+                        <h2 class="form-title">المعلومات المهنية</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profession" class="form-label">المهنة</label>
+                                <select id="profession" class="form-control" required>
+                                    <option value="">اختر مهنتك</option>
+                                    <option value="plumber">سباك</option>
+                                    <option value="electrician">كهربائي</option>
+                                    <option value="carpenter">نجار</option>
+                                    <option value="painter">دهان</option>
+                                    <option value="mechanic">ميكانيكي</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="experience" class="form-label">سنوات الخبرة</label>
+                                <select id="experience" class="form-control" required>
+                                    <option value="">اختر سنوات الخبرة</option>
+                                    <option value="0-2">أقل من سنتين</option>
+                                    <option value="2-5">2-5 سنوات</option>
+                                    <option value="5-10">5-10 سنوات</option>
+                                    <option value="10+">أكثر من 10 سنوات</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio" class="form-label">نبذة عنك</label>
+                            <textarea id="bio" class="form-control" placeholder="اكتب نبذة مختصرة عن خبرتك ومهاراتك" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">رفع شهادة الخبرة (اختياري)</label>
+                            <div class="file-upload" id="certificate-upload">
+                                <i class="fas fa-file-upload"></i>
+                                <p>اسحب وأفلت الملف هنا أو انقر للاختيار</p>
+                                <span class="btn btn-outline">اختر ملف</span>
+                                <input type="file" id="certificate" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="1">السابق</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="3">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section" id="step-3">
+                        <h2 class="form-title">اختيار نوع العضوية</h2>
+                        <p class="form-label">يرجى اختيار نوع العضوية المناسب لك. سيتم مراجعة طلبك من قبل مسؤول النظام لتحديد العضوية النهائية.</p>
+                        
+                        <div class="membership-options">
+                            <div class="membership-card" data-membership="basic">
+                                <div class="membership-badge">الأساسية</div>
+                                <div class="membership-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h3 class="membership-title">عضوية أساسية</h3>
+                                <div class="membership-price">مجانية</div>
+                                <ul class="membership-features">
+                                    <li>عرض ملفك الشخصي</li>
+                                    <li>استقبال طلبات محدودة</li>
+                                    <li>تقييمات العملاء</li>
+                                    <li>دعم فني أساسي</li>
+                                </ul>
+                                <div class="btn btn-outline">اختيار هذه العضوية</div>
+                            </div>
+                            
+                            <div class="membership-card" data-membership="professional">
+                                <div class="membership-badge">المحترف</div>
+                                <div class="membership-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3 class="membership-title">عضوية محترف</h3>
+                                <div class="membership-price">150 جنيه/شهر</div>
+                                <ul class="membership-features">
+                                    <li>جميع مزايا العضوية الأساسية</li>
+                                    <li>ظهور مميز في نتائج البحث</li>
+                                    <li>استقبال طلبات غير محدود</li>
+                                    <li>شهادة محترف معتمد</li>
+                                    <li>دعم فني متقدم</li>
+                                </ul>
+                                <div class="btn btn-outline">اختيار هذه العضوية</div>
+                            </div>
+                            
+                            <div class="membership-card" data-membership="premium">
+                                <div class="membership-badge">المميزة</div>
+                                <div class="membership-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="membership-title">عضوية مميزة</h3>
+                                <div class="membership-price">300 جنيه/شهر</div>
+                                <ul class="membership-features">
+                                    <li>جميع مزايا عضوية المحترف</li>
+                                    <li>ظهور في الصفحة الرئيسية</li>
+                                    <li>إعلانات مميزة</li>
+                                    <li>أولوية في طلبات العملاء</li>
+                                    <li>دعم فني على مدار الساعة</li>
+                                </ul>
+                                <div class="btn btn-outline">اختيار هذه العضوية</div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-approval-section">
+                            <h3><i class="fas fa-user-shield"></i> موافقة مسؤول النظام</h3>
+                            <p>سيقوم مسؤول النظام بمراجعة طلبك ومعلوماتك لتحديد العضوية المناسبة لك بناءً على خبرتك وتقييماتك.</p>
+                            <div class="status-indicator pending">
+                                <i class="fas fa-clock"></i>
+                                <span>في انتظار الموافقة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="2">السابق</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="4">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section" id="step-4">
+                        <h2 class="form-title">مراجعة المعلومات</h2>
+                        <p>يرجى مراجعة المعلومات المدخلة قبل إرسال الطلب</p>
+                        
+                        <div class="review-section">
+                            <h3>المعلومات الشخصية</h3>
+                            <div class="review-info">
+                                <p><strong>الاسم الكامل:</strong> <span id="review-name">-</span></p>
+                                <p><strong>البريد الإلكتروني:</strong> <span id="review-email">-</span></p>
+                                <p><strong>رقم الهاتف:</strong> <span id="review-phone">-</span></p>
+                            </div>
+                            
+                            <h3>المعلومات المهنية</h3>
+                            <div class="review-info">
+                                <p><strong>المهنة:</strong> <span id="review-profession">-</span></p>
+                                <p><strong>سنوات الخبرة:</strong> <span id="review-experience">-</span></p>
+                                <p><strong>نبذة:</strong> <span id="review-bio">-</span></p>
+                            </div>
+                            
+                            <h3>نوع العضوية المطلوبة</h3>
+                            <div class="review-info">
+                                <p><strong>العضوية:</strong> <span id="review-membership">-</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="remember-me">
+                                <input type="checkbox" id="agree-terms" required>
+                                <label for="agree-terms">أقر بأن جميع المعلومات المقدمة صحيحة وأوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="3">السابق</button>
+                            <button type="submit" class="btn btn-primary" id="submit-application">إرسال الطلب</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Homerun</h3>
+                    <p>منصة ربط رائدة في مصر، تتيح للعملاء العثور على أفضل الحرفيين والمتخصصين في مختلف المجالات، وتوفر للحرفيين فرصة لعرض خدماتهم.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="categories.html">الفئات</a></li>
+                        <li><a href="providers.html">مقدمو الخدمات</a></li>
+                        <li><a href="how-it-works.html">كيف تعمل</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">كيف تعمل المنصة</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 0123456789</li>
+                        <li><i class="fas fa-envelope"></i> info@homerun.com.eg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 Homerun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            const steps = document.querySelectorAll('.step');
+            const formSections = document.querySelectorAll('.form-section');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-section').id.split('-')[1];
+                    const nextStep = this.getAttribute('data-next');
+                    
+                    if (validateStep(currentStep)) {
+                        updateSteps(nextStep);
+                        
+                        if (nextStep === '4') {
+                            updateReviewSection();
+                        }
+                    }
+                });
+            });
+            
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevStep = this.getAttribute('data-prev');
+                    updateSteps(prevStep);
+                });
+            });
+            
+            function updateSteps(stepNumber) {
+                steps.forEach(step => {
+                    const stepNum = step.getAttribute('data-step');
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNum === stepNumber) {
+                        step.classList.add('active');
+                    } else if (stepNum < stepNumber) {
+                        step.classList.add('completed');
+                    }
+                });
+                
+                formSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === `step-${stepNumber}`) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+            
+            function validateStep(stepNumber) {
+                let isValid = true;
+                
+                if (stepNumber === '1') {
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+                    
+                    if (!fullName || !email || !phone || !password || !confirmPassword) {
+                        alert('يرجى ملء جميع الحقول المطلوبة');
+                        isValid = false;
+                    } else if (password !== confirmPassword) {
+                        alert('كلمات المرور غير متطابقة');
+                        isValid = false;
+                    }
+                } else if (stepNumber === '2') {
+                    const profession = document.getElementById('profession').value;
+                    const experience = document.getElementById('experience').value;
+                    const bio = document.getElementById('bio').value;
+                    
+                    if (!profession || !experience || !bio) {
+                        alert('يرجى ملء جميع الحقول المطلوبة');
+                        isValid = false;
+                    }
+                } else if (stepNumber === '3') {
+                    const selectedMembership = document.querySelector('.membership-card.selected');
+                    
+                    if (!selectedMembership) {
+                        alert('يرجى اختيار نوع العضوية');
+                        isValid = false;
+                    }
+                }
+                
+                return isValid;
+            }
+            
+            const membershipCards = document.querySelectorAll('.membership-card');
+            membershipCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    membershipCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const buttons = this.querySelectorAll('.btn');
+                    buttons.forEach(button => {
+                        button.textContent = 'محدد';
+                        button.classList.remove('btn-outline');
+                        button.classList.add('btn-primary');
+                    });
+                    
+                    membershipCards.forEach(c => {
+                        if (!c.classList.contains('selected')) {
+                            const otherButtons = c.querySelectorAll('.btn');
+                            otherButtons.forEach(button => {
+                                button.textContent = 'اختيار هذه العضوية';
+                                button.classList.remove('btn-primary');
+                                button.classList.add('btn-outline');
+                            });
+                        }
+                    });
+                });
+            });
+            
+            const fileUpload = document.getElementById('certificate-upload');
+            const fileInput = document.getElementById('certificate');
+            
+            fileUpload.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    fileUpload.innerHTML = `
+                        <i class="fas fa-file-check" style="color: var(--success);"></i>
+                        <p>تم رفع الملف: ${this.files[0].name}</p>
+                        <span class="btn btn-outline">تغيير الملف</span>
+                    `;
+                }
+            });
+            
+            function updateReviewSection() {
+                document.getElementById('review-name').textContent = document.getElementById('full-name').value;
+                document.getElementById('review-email').textContent = document.getElementById('email').value;
+                document.getElementById('review-phone').textContent = document.getElementById('phone').value;
+                document.getElementById('review-profession').textContent = document.getElementById('profession').options[document.getElementById('profession').selectedIndex].text;
+                document.getElementById('review-experience').textContent = document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text;
+                document.getElementById('review-bio').textContent = document.getElementById('bio').value;
+                
+                const selectedMembership = document.querySelector('.membership-card.selected');
+                if (selectedMembership) {
+                    document.getElementById('review-membership').textContent = selectedMembership.querySelector('.membership-title').textContent;
+                }
+            }
+            
+            const submitButton = document.getElementById('submit-application');
+            submitButton.addEventListener('click', function() {
+                const agreeTerms = document.getElementById('agree-terms').checked;
+                
+                if (!agreeTerms) {
+                    alert('يرجى الموافقة على الشروط والأحكام');
+                    return;
+                }
+                
+                const formData = {
+                    personalInfo: {
+                        name: document.getElementById('full-name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        nationalId: document.getElementById('national-id').value
+                    },
+                    professionalInfo: {
+                        profession: document.getElementById('profession').value,
+                        experience: document.getElementById('experience').value,
+                        bio: document.getElementById('bio').value
+                    },
+                    membership: document.querySelector('.membership-card.selected') ? 
+                        document.querySelector('.membership-card.selected').getAttribute('data-membership') : null
+                };
+                
+                console.log('بيانات تسجيل الحرفي:', formData);
+                
+                alert('تم إرسال طلبك بنجاح! سيتم مراجعته من قبل مسؤول النظام والاتصال بك خلال 48 ساعة.');
+                
+              
+            });
+        });
+    </script>
+</body>
+</html>
