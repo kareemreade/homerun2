@@ -6,7 +6,6 @@
     <title>Homerun - منصة خدمات منزلية واحترافية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* المتغيرات والأساسيات */
         :root {
             --primary: #2c5aa0;
             --secondary: #ff6b00;
@@ -116,7 +115,6 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي - محسّن للهواتف */
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -175,7 +173,6 @@
             transform: translateY(-1px);
         }
 
-        /* شريط التنقل - محسّن للهواتف */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -260,12 +257,10 @@
             padding: 5px;
         }
 
-        /* إخفاء أزرار الجوال في الشاشات الكبيرة */
         .mobile-auth-buttons {
             display: none;
         }
 
-        /* قسم البحث */
         .search-section {
             background: linear-gradient(135deg, var(--primary) 0%, #1e3f73 100%);
             color: white;
@@ -340,7 +335,6 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* قسم الميزات */
         .features {
             background-color: white;
         }
@@ -415,7 +409,6 @@
             font-size: 0.95rem;
         }
 
-        /* قسم مقدمي الخدمات */
         .providers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -511,7 +504,6 @@
             font-size: 1rem;
         }
 
-        /* قسم كيف تعمل */
         .how-it-works {
             background-color: var(--light);
         }
@@ -555,7 +547,6 @@
             color: var(--primary);
         }
 
-        /* قسم التسجيل */
         .register-section {
             background: linear-gradient(135deg, var(--secondary) 0%, #ff8c00 100%);
             color: white;
@@ -587,7 +578,6 @@
             flex-wrap: wrap;
         }
 
-        /* قسم التطبيق */
         .app-section {
             background-color: white;
         }
@@ -645,7 +635,6 @@
             background-color: #343a40;
         }
 
-        /* الفوتر */
         .footer {
             background-color: var(--dark);
             color: white;
@@ -700,7 +689,6 @@
             font-size: 0.85rem;
         }
 
-        /* تحسينات التجاوب للهواتف */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
@@ -731,7 +719,6 @@
         }
 
         @media (max-width: 768px) {
-            /* تحسينات الشريط العلوي للهواتف */
             .top-bar {
                 padding: 8px 0;
             }
@@ -751,7 +738,7 @@
             }
             
             .contact-info a span {
-                display: inline; /* إظهار النص على الشاشات المتوسطة */
+                display: inline; 
             }
             
             .social-links {
@@ -762,7 +749,6 @@
                 padding: 6px;
             }
             
-            /* تحسينات شريط التنقل للهواتف */
             .navbar-content {
                 padding: 12px 0;
             }
@@ -776,7 +762,6 @@
                 margin-left: 6px;
             }
             
-            /* القائمة المنزلقة للهواتف */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -812,7 +797,6 @@
                 font-size: 1.1rem;
             }
             
-            /* أزرار التسجيل داخل القائمة المنزلقة */
             .mobile-auth-buttons {
                 display: none;
                 flex-direction: column;
@@ -831,7 +815,6 @@
                 font-size: 1rem;
             }
             
-            /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
             }
@@ -858,7 +841,6 @@
                 align-items: center;
             }
             
-            /* التعديل: عرض 2 بطاقة في كل سطر لقسم الميزات */
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -878,13 +860,11 @@
                 margin-bottom: 8px;
             }
             
-            /* التعديل: عرض 3 فئات في كل سطر على الشاشات المتوسطة */
             .categories-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
             
-            /* التعديل: عرض 2 بطاقة في كل سطر لقسم مقدمي الخدمات */
             .providers-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -939,7 +919,6 @@
                 border-radius: var(--border-radius);
             }
             
-            /* التعديل: عرض 2 بطاقة في كل سطر لقسم الميزات على الشاشات الصغيرة */
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -962,13 +941,11 @@
                 font-size: 0.85rem;
             }
             
-            /* التعديل: عرض 2 فئة في كل سطر على الشاشات الصغيرة */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
             
-            /* التعديل: تحسين عرض مقدمي الخدمات على الشاشات الصغيرة */
             .providers-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -1022,7 +999,6 @@
         }
 
         @media (max-width: 400px) {
-            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة جداً */
             .top-bar {
                 padding: 6px 0;
             }
@@ -1037,7 +1013,7 @@
             }
             
             .contact-info a span {
-                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+                display: none; 
             }
             
             .social-links {
@@ -1053,7 +1029,6 @@
                 font-size: 0.8rem;
             }
             
-            /* التعديل: تحسين عرض الميزات على الشاشات الصغيرة جداً */
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -1076,7 +1051,6 @@
                 line-height: 1.4;
             }
             
-            /* التعديل: تحسين عرض الفئات على الشاشات الصغيرة جداً */
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 6px;
@@ -1092,7 +1066,6 @@
                 font-size: 0.85rem;
             }
             
-            /* التعديل: تحسين عرض مقدمي الخدمات على الشاشات الصغيرة جداً */
             .providers-grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -1120,7 +1093,6 @@
             }
         }
 
-        /* تحسينات للشاشات الصغيرة جداً */
         @media (max-width: 360px) {
             .search-title {
                 font-size: 1.3rem;
@@ -1149,7 +1121,6 @@
             }
         }
 
-        /* تحسينات للوضع الأفقي في الهواتف */
         @media (max-height: 500px) and (orientation: landscape) {
             .search-section {
                 padding: 30px 0;
@@ -1170,7 +1141,6 @@
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي المحسّن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -1192,7 +1162,6 @@
         </div>
     </div>
 
-    <!-- شريط التنقل المحسّن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -1215,7 +1184,6 @@
                 </li>
             </ul>
             
-            <!-- أزرار التسجيل للشاشات الكبيرة -->
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">تسجيل كحرفي</a>
                 <a href="#" class="btn btn-primary">تسجيل الدخول</a>
@@ -1227,7 +1195,6 @@
         </div>
     </nav>
 
-    <!-- باقي المحتوى -->
     <!-- search  -->
     <section class="search-section">
         <div class="container">
@@ -1250,7 +1217,6 @@
         </div>
     </section>
 
-    <!-- features  -->
     <section class="section features">
         <div class="container">
             <h2 class="section-title">لماذا تختار Homerun؟</h2>
@@ -1287,7 +1253,6 @@
         </div>
     </section>
 
-    <!-- categories  -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">الفئات الشائعة</h2>
@@ -1529,9 +1494,7 @@
     </footer>
 
     <script>
-        // كود JavaScript للتفاعلية
         document.addEventListener('DOMContentLoaded', function() {
-            // القائمة المتنقلة
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1549,7 +1512,6 @@
                 });
             }
             
-            // إغلاق القائمة عند النقر على رابط
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
