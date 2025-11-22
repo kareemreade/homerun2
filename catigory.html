@@ -113,49 +113,66 @@
             border-radius: 2px;
         }
 
-        /* الشريط العلوي */
+        /* الشريط العلوي - محسّن للهواتف */
         .top-bar {
             background-color: var(--primary);
             color: white;
-            padding: 8px 0;
-            font-size: 0.9rem;
+            padding: 10px 0;
         }
 
         .top-bar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-wrap: nowrap;
+            gap: 15px;
         }
 
         .contact-info {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-wrap: nowrap;
+            gap: 20px;
+            align-items: center;
         }
 
-        .contact-info span {
+        .contact-info a {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .contact-info i {
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-links a {
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
+            padding: 6px;
+            border-radius: 4px;
         }
 
         .social-links a:hover {
             color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
         }
 
-        /* شريط التنقل */
+        /* شريط التنقل - محسّن للهواتف */
         .navbar {
             background-color: white;
             box-shadow: var(--box-shadow);
@@ -172,7 +189,7 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
@@ -182,6 +199,7 @@
         .logo i {
             color: var(--secondary);
             margin-left: 8px;
+            font-size: 1.4rem;
         }
 
         .nav-links {
@@ -196,6 +214,7 @@
             position: relative;
             transition: var(--transition);
             white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -220,16 +239,22 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+        }
+
+        .nav-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             background: none;
             border: none;
             color: var(--primary);
+            padding: 5px;
         }
 
         /* إخفاء أزرار الجوال في الشاشات الكبيرة */
@@ -309,7 +334,7 @@
             cursor: pointer;
         }
 
-        /* شبكة الفئات */
+        /* شبكة الفئات - التعديل الأساسي هنا */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -473,7 +498,13 @@
             font-size: 0.9rem;
         }
 
-        /* التجاوب */
+        /* تحسينات التجاوب للهواتف */
+        @media (max-width: 1200px) {
+            .container {
+                width: 95%;
+            }
+        }
+
         @media (max-width: 992px) {
             .categories-filter {
                 flex-direction: column;
@@ -486,13 +517,49 @@
         }
 
         @media (max-width: 768px) {
+            /* تحسينات الشريط العلوي للهواتف */
+            .top-bar {
+                padding: 8px 0;
+            }
+            
             .top-bar-content {
-                justify-content: center;
-                text-align: center;
+                justify-content: space-between;
+                gap: 10px;
             }
             
             .contact-info {
-                justify-content: center;
+                gap: 15px;
+            }
+            
+            .contact-info a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .contact-info a span {
+                display: inline; /* إظهار النص على الشاشات المتوسطة */
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                padding: 6px;
+            }
+            
+            /* تحسينات شريط التنقل للهواتف */
+            .navbar-content {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                font-size: 1.2rem;
+                margin-left: 6px;
             }
             
             /* القائمة المنزلقة للهواتف */
@@ -545,6 +612,11 @@
                 display: flex;
             }
             
+            .mobile-auth-buttons .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
             /* إخفاء أزرار التسجيل من الشريط العلوي في الهواتف */
             .nav-actions {
                 display: none;
@@ -559,8 +631,10 @@
                 font-size: 2rem;
             }
             
+            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف */
             .categories-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
             .filter-options {
@@ -569,29 +643,180 @@
         }
 
         @media (max-width: 576px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            
+            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة */
             .categories-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .category-card {
+                min-height: 280px;
+                display: flex;
+                flex-direction: column;
             }
             
             .category-header {
+                padding: 15px;
                 flex-direction: column;
                 text-align: center;
             }
             
             .category-icon {
                 margin-left: 0;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .category-name {
+                font-size: 1.1rem;
+            }
+            
+            .category-body {
+                padding: 15px;
+                flex-grow: 1;
+            }
+            
+            .category-description {
+                font-size: 0.85rem;
+                margin-bottom: 10px;
+            }
+            
+            .category-services {
+                gap: 5px;
+            }
+            
+            .service-tag {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+            
+            .category-footer {
+                padding: 10px 15px;
+            }
+            
+            /* تحسينات إضافية للشريط العلوي على الشاشات الصغيرة */
+            .top-bar {
+                padding: 6px 0;
+            }
+            
+            .contact-info {
+                gap: 10px;
+            }
+            
+            .contact-info a {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .contact-info a span {
+                display: none; /* إخفاء النص على الشاشات الصغيرة جداً */
+            }
+            
+            .social-links {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة جداً */
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .category-header {
+                padding: 12px;
+            }
+            
+            .category-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .category-name {
+                font-size: 1rem;
+            }
+            
+            .category-count {
+                font-size: 0.8rem;
+            }
+            
+            .category-body {
+                padding: 12px;
+            }
+            
+            .category-description {
+                font-size: 0.8rem;
+            }
+            
+            .service-tag {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            /* التعديل الأساسي: جعل كل فئتين في سطر في الهواتف الصغيرة جداً */
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+
+        /* تحسينات للوضع الأفقي في الهواتف */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .page-header {
+                padding: 30px 0;
+            }
+            
+            /* تقليل ارتفاع الشريط العلوي في الوضع الأفقي */
+            .top-bar {
+                padding: 4px 0;
+            }
+            
+            .navbar-content {
+                padding: 8px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
+    <!-- الشريط العلوي المحسّن -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
-                <span><i class="fas fa-phone"></i> 0123456789</span>
-                <span><i class="fas fa-envelope"></i> info@homerun.com.eg</span>
+                <a href="tel:0123456789">
+                    <i class="fas fa-phone"></i>
+                    <span>0123456789</span>
+                </a>
+                <a href="mailto:info@homerun.com.eg">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@homerun.com.eg</span>
+                </a>
             </div>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -602,7 +827,7 @@
         </div>
     </div>
 
-    <!-- شريط التنقل -->
+    <!-- شريط التنقل المحسّن -->
     <nav class="navbar">
         <div class="container navbar-content">
             <a href="#" class="logo">
@@ -637,6 +862,7 @@
         </div>
     </nav>
 
+    <!-- باقي محتوى صفحة الفئات يبقى كما هو -->
     <!-- رأس الصفحة -->
     <div class="page-header">
         <div class="container">
