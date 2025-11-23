@@ -406,6 +406,63 @@
             display: none;
         }
 
+        .account-type-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .account-type-card {
+            border: 2px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .account-type-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .account-type-card.selected {
+            border-color: var(--primary);
+            background: rgba(44, 90, 160, 0.05);
+        }
+
+        .account-type-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .account-type-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .account-type-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .account-type-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
         .membership-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -527,6 +584,44 @@
             background: #d4edda;
         }
 
+        .review-section {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .review-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .review-info {
+            margin-bottom: 20px;
+        }
+
+        .review-info p {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .review-info p:last-child {
+            border-bottom: none;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .remember-me input {
+            margin-top: 5px;
+        }
+
         .footer {
             background-color: var(--dark);
             color: white;
@@ -581,6 +676,7 @@
         }
 
         @media (max-width: 992px) {
+            .account-type-options,
             .membership-options {
                 grid-template-columns: 1fr;
             }
@@ -777,14 +873,53 @@
                 </div>
                 
                 <div class="registration-steps">
-                    <div class="step active" data-step="1">المعلومات الشخصية</div>
+                    <div class="step active" data-step="0">نوع الحساب</div>
+                    <div class="step" data-step="1">المعلومات الأساسية</div>
                     <div class="step" data-step="2">المعلومات المهنية</div>
                     <div class="step" data-step="3">اختيار العضوية</div>
                     <div class="step" data-step="4">المراجعة والتأكيد</div>
                 </div>
                 
                 <div class="registration-form-container">
-                    <div class="form-section active" id="step-1">
+                    <!-- Step 0: Account Type Selection -->
+                    <div class="form-section active" id="step-0">
+                        <h2 class="form-title">اختر نوع الحساب</h2>
+                        <p class="form-label">يرجى اختيار نوع الحساب الذي يناسبك</p>
+                        
+                        <div class="account-type-options">
+                            <div class="account-type-card" data-account-type="individual">
+                                <div class="account-type-badge">مستقل</div>
+                                <div class="account-type-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h3 class="account-type-title">شخص مستقل</h3>
+                                <p class="account-type-description">
+                                    اختر هذا الخيار إذا كنت تعمل بشكل فردي وتقدم خدماتك بنفسك
+                                </p>
+                                <div class="btn btn-outline">اختيار هذا النوع</div>
+                            </div>
+                            
+                            <div class="account-type-card" data-account-type="company">
+                                <div class="account-type-badge">شركة</div>
+                                <div class="account-type-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="account-type-title">شركة</h3>
+                                <p class="account-type-description">
+                                    اختر هذا الخيار إذا كنت تمثل شركة وتقدم خدمات متعددة
+                                </p>
+                                <div class="btn btn-outline">اختيار هذا النوع</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <div></div>
+                            <button type="button" class="btn btn-primary next-step" data-next="1">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 1: Personal Information for Individual -->
+                    <div class="form-section individual-form" id="step-1-individual">
                         <h2 class="form-title">المعلومات الشخصية</h2>
                         
                         <div class="form-row">
@@ -824,12 +959,69 @@
                         </div>
                         
                         <div class="form-navigation">
-                            <div></div> 
+                            <button type="button" class="btn btn-outline prev-step" data-prev="0">السابق</button>
                             <button type="button" class="btn btn-primary next-step" data-next="2">التالي</button>
                         </div>
                     </div>
                     
-                    <div class="form-section" id="step-2">
+                    <!-- Step 1: Company Information -->
+                    <div class="form-section company-form" id="step-1-company">
+                        <h2 class="form-title">معلومات الشركة</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company-name" class="form-label">اسم الشركة</label>
+                                <input type="text" id="company-name" class="form-control" placeholder="أدخل اسم الشركة" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="commercial-register" class="form-label">رقم السجل التجاري</label>
+                                <input type="text" id="commercial-register" class="form-control" placeholder="أدخل رقم السجل التجاري" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company-phone" class="form-label">هاتف الشركة</label>
+                                <input type="tel" id="company-phone" class="form-control" placeholder="أدخل هاتف الشركة" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company-email" class="form-label">البريد الإلكتروني للشركة</label>
+                                <input type="email" id="company-email" class="form-control" placeholder="أدخل البريد الإلكتروني للشركة" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company-password" class="form-label">كلمة المرور</label>
+                                <input type="password" id="company-password" class="form-control" placeholder="أنشئ كلمة مرور قوية" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company-confirm-password" class="form-label">تأكيد كلمة المرور</label>
+                                <input type="password" id="company-confirm-password" class="form-control" placeholder="أعد إدخال كلمة المرور" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">مستندات الشركة</label>
+                            <div class="file-upload" id="company-docs-upload">
+                                <i class="fas fa-file-upload"></i>
+                                <p>اسحب وأفلت ملفات الشركة هنا أو انقر للاختيار</p>
+                                <span class="btn btn-outline">اختر ملفات</span>
+                                <input type="file" id="company-docs" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="0">السابق</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="2">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Professional Information for Individual -->
+                    <div class="form-section individual-form" id="step-2-individual">
                         <h2 class="form-title">المعلومات المهنية</h2>
                         
                         <div class="form-row">
@@ -879,7 +1071,60 @@
                         </div>
                     </div>
                     
-                    <div class="form-section" id="step-3">
+                    <!-- Step 2: Professional Information for Company -->
+                    <div class="form-section company-form" id="step-2-company">
+                        <h2 class="form-title">المعلومات المهنية للشركة</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company-services" class="form-label">الخدمات التي تقدمها الشركة</label>
+                                <select id="company-services" class="form-control" required multiple>
+                                    <option value="plumbing">خدمات السباكة</option>
+                                    <option value="electrical">خدمات الكهرباء</option>
+                                    <option value="carpentry">خدمات النجارة</option>
+                                    <option value="painting">خدمات الدهان</option>
+                                    <option value="cleaning">خدمات التنظيف</option>
+                                    <option value="maintenance">خدمات الصيانة</option>
+                                    <option value="other">خدمات أخرى</option>
+                                </select>
+                                <small>يمكنك اختيار أكثر من خدمة بالضغط مع الاستمرار على زر Ctrl</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company-experience" class="form-label">سنوات الخبرة في المجال</label>
+                                <select id="company-experience" class="form-control" required>
+                                    <option value="">اختر سنوات الخبرة</option>
+                                    <option value="0-2">أقل من سنتين</option>
+                                    <option value="2-5">2-5 سنوات</option>
+                                    <option value="5-10">5-10 سنوات</option>
+                                    <option value="10+">أكثر من 10 سنوات</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company-bio" class="form-label">نبذة عن الشركة</label>
+                            <textarea id="company-bio" class="form-control" placeholder="اكتب نبذة مختصرة عن الشركة وخبراتها" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">صور لأعمال الشركة (اختياري)</label>
+                            <div class="file-upload" id="company-works-upload">
+                                <i class="fas fa-images"></i>
+                                <p>اسحب وأفلت الصور هنا أو انقر للاختيار</p>
+                                <span class="btn btn-outline">اختر الصور</span>
+                                <input type="file" id="company-works" accept=".jpg,.jpeg,.png" multiple>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="1">السابق</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="3">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Membership Selection for Individual -->
+                    <div class="form-section individual-form" id="step-3-individual">
                         <h2 class="form-title">اختيار نوع العضوية</h2>
                         <p class="form-label">يرجى اختيار نوع العضوية المناسب لك. سيتم مراجعة طلبك من قبل مسؤول النظام لتحديد العضوية النهائية.</p>
                         
@@ -950,16 +1195,80 @@
                         </div>
                     </div>
                     
-                    <div class="form-section" id="step-4">
+                    <!-- Step 3: Membership Selection for Company -->
+                    <div class="form-section company-form" id="step-3-company">
+                        <h2 class="form-title">اختيار نوع العضوية للشركة</h2>
+                        <p class="form-label">يرجى اختيار نوع العضوية المناسب لشركتك. جميع عضويات الشركات مدفوعة.</p>
+                        
+                        <div class="membership-options">
+                            <div class="membership-card" data-membership="company-basic">
+                                <div class="membership-badge">الشركات - أساسي</div>
+                                <div class="membership-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="membership-title">عضوية الشركات الأساسية</h3>
+                                <div class="membership-price">500 جنيه/شهر</div>
+                                <ul class="membership-features">
+                                    <li>عرض ملف الشركة</li>
+                                    <li>إدراج 5 خدمات</li>
+                                    <li>استقبال طلبات محدودة</li>
+                                    <li>تقييمات العملاء</li>
+                                    <li>دعم فني أساسي</li>
+                                </ul>
+                                <div class="btn btn-outline">اختيار هذه العضوية</div>
+                            </div>
+                            
+                            <div class="membership-card" data-membership="company-premium">
+                                <div class="membership-badge">الشركات - مميز</div>
+                                <div class="membership-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="membership-title">عضوية الشركات المميزة</h3>
+                                <div class="membership-price">1000 جنيه/شهر</div>
+                                <ul class="membership-features">
+                                    <li>جميع مزايا العضوية الأساسية</li>
+                                    <li>إدراج خدمات غير محدود</li>
+                                    <li>ظهور مميز في نتائج البحث</li>
+                                    <li>شهادة شركة معتمدة</li>
+                                    <li>دعم فني متقدم</li>
+                                    <li>إعلانات مميزة</li>
+                                </ul>
+                                <div class="btn btn-outline">اختيار هذه العضوية</div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-approval-section">
+                            <h3><i class="fas fa-user-shield"></i> موافقة مسؤول النظام</h3>
+                            <p>سيقوم مسؤول النظام بمراجعة طلب شركتك ومعلوماتها لتحديد العضوية المناسبة بناءً على خبرتها وتقييماتها.</p>
+                            <div class="status-indicator pending">
+                                <i class="fas fa-clock"></i>
+                                <span>في انتظار الموافقة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="2">السابق</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="4">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Review and Confirm for Individual -->
+                    <div class="form-section individual-form" id="step-4-individual">
                         <h2 class="form-title">مراجعة المعلومات</h2>
                         <p>يرجى مراجعة المعلومات المدخلة قبل إرسال الطلب</p>
                         
                         <div class="review-section">
+                            <h3>نوع الحساب</h3>
+                            <div class="review-info">
+                                <p><strong>نوع الحساب:</strong> <span id="review-account-type-individual">-</span></p>
+                            </div>
+                            
                             <h3>المعلومات الشخصية</h3>
                             <div class="review-info">
                                 <p><strong>الاسم الكامل:</strong> <span id="review-name">-</span></p>
                                 <p><strong>البريد الإلكتروني:</strong> <span id="review-email">-</span></p>
                                 <p><strong>رقم الهاتف:</strong> <span id="review-phone">-</span></p>
+                                <p><strong>رقم البطاقة الشخصية:</strong> <span id="review-national-id">-</span></p>
                             </div>
                             
                             <h3>المعلومات المهنية</h3>
@@ -971,20 +1280,65 @@
                             
                             <h3>نوع العضوية المطلوبة</h3>
                             <div class="review-info">
-                                <p><strong>العضوية:</strong> <span id="review-membership">-</span></p>
+                                <p><strong>العضوية:</strong> <span id="review-membership-individual">-</span></p>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <div class="remember-me">
-                                <input type="checkbox" id="agree-terms" required>
-                                <label for="agree-terms">أقر بأن جميع المعلومات المقدمة صحيحة وأوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></label>
+                                <input type="checkbox" id="agree-terms-individual" required>
+                                <label for="agree-terms-individual">أقر بأن جميع المعلومات المقدمة صحيحة وأوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></label>
                             </div>
                         </div>
                         
                         <div class="form-navigation">
                             <button type="button" class="btn btn-outline prev-step" data-prev="3">السابق</button>
-                            <button type="submit" class="btn btn-primary" id="submit-application">إرسال الطلب</button>
+                            <button type="submit" class="btn btn-primary" id="submit-application-individual">إرسال الطلب</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Review and Confirm for Company -->
+                    <div class="form-section company-form" id="step-4-company">
+                        <h2 class="form-title">مراجعة معلومات الشركة</h2>
+                        <p>يرجى مراجعة المعلومات المدخلة قبل إرسال الطلب</p>
+                        
+                        <div class="review-section">
+                            <h3>نوع الحساب</h3>
+                            <div class="review-info">
+                                <p><strong>نوع الحساب:</strong> <span id="review-account-type-company">-</span></p>
+                            </div>
+                            
+                            <h3>معلومات الشركة</h3>
+                            <div class="review-info">
+                                <p><strong>اسم الشركة:</strong> <span id="review-company-name">-</span></p>
+                                <p><strong>رقم السجل التجاري:</strong> <span id="review-commercial-register">-</span></p>
+                                <p><strong>هاتف الشركة:</strong> <span id="review-company-phone">-</span></p>
+                                <p><strong>بريد الشركة:</strong> <span id="review-company-email">-</span></p>
+                            </div>
+                            
+                            <h3>المعلومات المهنية للشركة</h3>
+                            <div class="review-info">
+                                <p><strong>الخدمات المقدمة:</strong> <span id="review-company-services">-</span></p>
+                                <p><strong>سنوات الخبرة:</strong> <span id="review-company-experience">-</span></p>
+                                <p><strong>نبذة عن الشركة:</strong> <span id="review-company-bio">-</span></p>
+                            </div>
+                            
+                            <h3>نوع العضوية المطلوبة</h3>
+                            <div class="review-info">
+                                <p><strong>العضوية:</strong> <span id="review-membership-company">-</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="remember-me">
+                                <input type="checkbox" id="agree-terms-company" required>
+                                <label for="agree-terms-company">أقر بأن جميع المعلومات المقدمة صحيحة وأوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="3">السابق</button>
+                            <button type="submit" class="btn btn-primary" id="submit-application-company">إرسال الطلب</button>
                         </div>
                     </div>
                 </div>
@@ -1069,10 +1423,42 @@
                 });
             });
             
+            // Registration form functionality
             const steps = document.querySelectorAll('.step');
             const formSections = document.querySelectorAll('.form-section');
             const nextButtons = document.querySelectorAll('.next-step');
             const prevButtons = document.querySelectorAll('.prev-step');
+            
+            // Account type selection
+            const accountTypeCards = document.querySelectorAll('.account-type-card');
+            let selectedAccountType = '';
+            
+            accountTypeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    accountTypeCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const buttons = this.querySelectorAll('.btn');
+                    buttons.forEach(button => {
+                        button.textContent = 'محدد';
+                        button.classList.remove('btn-outline');
+                        button.classList.add('btn-primary');
+                    });
+                    
+                    accountTypeCards.forEach(c => {
+                        if (!c.classList.contains('selected')) {
+                            const otherButtons = c.querySelectorAll('.btn');
+                            otherButtons.forEach(button => {
+                                button.textContent = 'اختيار هذا النوع';
+                                button.classList.remove('btn-primary');
+                                button.classList.add('btn-outline');
+                            });
+                        }
+                    });
+                    
+                    selectedAccountType = this.getAttribute('data-account-type');
+                });
+            });
             
             nextButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1108,10 +1494,20 @@
                     }
                 });
                 
+                // Show appropriate form sections based on account type
                 formSections.forEach(section => {
                     section.classList.remove('active');
-                    if (section.id === `step-${stepNumber}`) {
-                        section.classList.add('active');
+                    
+                    if (selectedAccountType === 'individual') {
+                        if (section.id === `step-${stepNumber}-individual` || 
+                            (stepNumber === '0' && section.id === 'step-0')) {
+                            section.classList.add('active');
+                        }
+                    } else if (selectedAccountType === 'company') {
+                        if (section.id === `step-${stepNumber}-company` || 
+                            (stepNumber === '0' && section.id === 'step-0')) {
+                            section.classList.add('active');
+                        }
                     }
                 });
             }
@@ -1119,31 +1515,71 @@
             function validateStep(stepNumber) {
                 let isValid = true;
                 
-                if (stepNumber === '1') {
-                    const fullName = document.getElementById('full-name').value;
-                    const email = document.getElementById('email').value;
-                    const phone = document.getElementById('phone').value;
-                    const password = document.getElementById('password').value;
-                    const confirmPassword = document.getElementById('confirm-password').value;
-                    
-                    if (!fullName || !email || !phone || !password || !confirmPassword) {
-                        alert('يرجى ملء جميع الحقول المطلوبة');
+                if (stepNumber === '0') {
+                    if (!selectedAccountType) {
+                        alert('يرجى اختيار نوع الحساب');
                         isValid = false;
-                    } else if (password !== confirmPassword) {
-                        alert('كلمات المرور غير متطابقة');
-                        isValid = false;
+                    }
+                } else if (stepNumber === '1') {
+                    if (selectedAccountType === 'individual') {
+                        const fullName = document.getElementById('full-name').value;
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+                        const password = document.getElementById('password').value;
+                        const confirmPassword = document.getElementById('confirm-password').value;
+                        
+                        if (!fullName || !email || !phone || !password || !confirmPassword) {
+                            alert('يرجى ملء جميع الحقول المطلوبة');
+                            isValid = false;
+                        } else if (password !== confirmPassword) {
+                            alert('كلمات المرور غير متطابقة');
+                            isValid = false;
+                        }
+                    } else if (selectedAccountType === 'company') {
+                        const companyName = document.getElementById('company-name').value;
+                        const commercialRegister = document.getElementById('commercial-register').value;
+                        const companyPhone = document.getElementById('company-phone').value;
+                        const companyEmail = document.getElementById('company-email').value;
+                        const companyPassword = document.getElementById('company-password').value;
+                        const companyConfirmPassword = document.getElementById('company-confirm-password').value;
+                        
+                        if (!companyName || !commercialRegister || !companyPhone || !companyEmail || 
+                            !companyPassword || !companyConfirmPassword) {
+                            alert('يرجى ملء جميع الحقول المطلوبة');
+                            isValid = false;
+                        } else if (companyPassword !== companyConfirmPassword) {
+                            alert('كلمات المرور غير متطابقة');
+                            isValid = false;
+                        }
                     }
                 } else if (stepNumber === '2') {
-                    const profession = document.getElementById('profession').value;
-                    const experience = document.getElementById('experience').value;
-                    const bio = document.getElementById('bio').value;
-                    
-                    if (!profession || !experience || !bio) {
-                        alert('يرجى ملء جميع الحقول المطلوبة');
-                        isValid = false;
+                    if (selectedAccountType === 'individual') {
+                        const profession = document.getElementById('profession').value;
+                        const experience = document.getElementById('experience').value;
+                        const bio = document.getElementById('bio').value;
+                        
+                        if (!profession || !experience || !bio) {
+                            alert('يرجى ملء جميع الحقول المطلوبة');
+                            isValid = false;
+                        }
+                    } else if (selectedAccountType === 'company') {
+                        const companyServices = document.getElementById('company-services');
+                        const companyExperience = document.getElementById('company-experience').value;
+                        const companyBio = document.getElementById('company-bio').value;
+                        
+                        if (companyServices.selectedOptions.length === 0 || !companyExperience || !companyBio) {
+                            alert('يرجى ملء جميع الحقول المطلوبة');
+                            isValid = false;
+                        }
                     }
                 } else if (stepNumber === '3') {
-                    const selectedMembership = document.querySelector('.membership-card.selected');
+                    let selectedMembership;
+                    
+                    if (selectedAccountType === 'individual') {
+                        selectedMembership = document.querySelector('#step-3-individual .membership-card.selected');
+                    } else {
+                        selectedMembership = document.querySelector('#step-3-company .membership-card.selected');
+                    }
                     
                     if (!selectedMembership) {
                         alert('يرجى اختيار نوع العضوية');
@@ -1157,91 +1593,224 @@
             const membershipCards = document.querySelectorAll('.membership-card');
             membershipCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    membershipCards.forEach(c => c.classList.remove('selected'));
-                    this.classList.add('selected');
-                    
-                    const buttons = this.querySelectorAll('.btn');
-                    buttons.forEach(button => {
-                        button.textContent = 'محدد';
-                        button.classList.remove('btn-outline');
-                        button.classList.add('btn-primary');
-                    });
-                    
-                    membershipCards.forEach(c => {
-                        if (!c.classList.contains('selected')) {
-                            const otherButtons = c.querySelectorAll('.btn');
-                            otherButtons.forEach(button => {
-                                button.textContent = 'اختيار هذه العضوية';
-                                button.classList.remove('btn-primary');
-                                button.classList.add('btn-outline');
-                            });
-                        }
-                    });
+                    // Only select cards that are visible
+                    if (this.closest('.form-section').classList.contains('active')) {
+                        // Deselect all cards in the same section
+                        const parentSection = this.closest('.form-section');
+                        const allCardsInSection = parentSection.querySelectorAll('.membership-card');
+                        allCardsInSection.forEach(c => c.classList.remove('selected'));
+                        
+                        // Select the clicked card
+                        this.classList.add('selected');
+                        
+                        const buttons = this.querySelectorAll('.btn');
+                        buttons.forEach(button => {
+                            button.textContent = 'محدد';
+                            button.classList.remove('btn-outline');
+                            button.classList.add('btn-primary');
+                        });
+                        
+                        // Reset other cards in the same section
+                        allCardsInSection.forEach(c => {
+                            if (!c.classList.contains('selected')) {
+                                const otherButtons = c.querySelectorAll('.btn');
+                                otherButtons.forEach(button => {
+                                    button.textContent = 'اختيار هذه العضوية';
+                                    button.classList.remove('btn-primary');
+                                    button.classList.add('btn-outline');
+                                });
+                            }
+                        });
+                    }
                 });
             });
             
+            // File upload handlers
             const fileUpload = document.getElementById('certificate-upload');
             const fileInput = document.getElementById('certificate');
             
-            fileUpload.addEventListener('click', function() {
-                fileInput.click();
-            });
+            if (fileUpload) {
+                fileUpload.addEventListener('click', function() {
+                    fileInput.click();
+                });
+                
+                fileInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        fileUpload.innerHTML = `
+                            <i class="fas fa-file-check" style="color: var(--success);"></i>
+                            <p>تم رفع الملف: ${this.files[0].name}</p>
+                            <span class="btn btn-outline">تغيير الملف</span>
+                        `;
+                    }
+                });
+            }
             
-            fileInput.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    fileUpload.innerHTML = `
-                        <i class="fas fa-file-check" style="color: var(--success);"></i>
-                        <p>تم رفع الملف: ${this.files[0].name}</p>
-                        <span class="btn btn-outline">تغيير الملف</span>
-                    `;
-                }
-            });
+            const companyDocsUpload = document.getElementById('company-docs-upload');
+            const companyDocsInput = document.getElementById('company-docs');
+            
+            if (companyDocsUpload) {
+                companyDocsUpload.addEventListener('click', function() {
+                    companyDocsInput.click();
+                });
+                
+                companyDocsInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        let fileNames = '';
+                        for (let i = 0; i < this.files.length; i++) {
+                            fileNames += this.files[i].name;
+                            if (i < this.files.length - 1) fileNames += ', ';
+                        }
+                        
+                        companyDocsUpload.innerHTML = `
+                            <i class="fas fa-file-check" style="color: var(--success);"></i>
+                            <p>تم رفع ${this.files.length} ملف: ${fileNames}</p>
+                            <span class="btn btn-outline">تغيير الملفات</span>
+                        `;
+                    }
+                });
+            }
+            
+            const companyWorksUpload = document.getElementById('company-works-upload');
+            const companyWorksInput = document.getElementById('company-works');
+            
+            if (companyWorksUpload) {
+                companyWorksUpload.addEventListener('click', function() {
+                    companyWorksInput.click();
+                });
+                
+                companyWorksInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        companyWorksUpload.innerHTML = `
+                            <i class="fas fa-images" style="color: var(--success);"></i>
+                            <p>تم رفع ${this.files.length} صورة</p>
+                            <span class="btn btn-outline">تغيير الصور</span>
+                        `;
+                    }
+                });
+            }
             
             function updateReviewSection() {
-                document.getElementById('review-name').textContent = document.getElementById('full-name').value;
-                document.getElementById('review-email').textContent = document.getElementById('email').value;
-                document.getElementById('review-phone').textContent = document.getElementById('phone').value;
-                document.getElementById('review-profession').textContent = document.getElementById('profession').options[document.getElementById('profession').selectedIndex].text;
-                document.getElementById('review-experience').textContent = document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text;
-                document.getElementById('review-bio').textContent = document.getElementById('bio').value;
-                
-                const selectedMembership = document.querySelector('.membership-card.selected');
-                if (selectedMembership) {
-                    document.getElementById('review-membership').textContent = selectedMembership.querySelector('.membership-title').textContent;
+                if (selectedAccountType === 'individual') {
+                    // Account type
+                    document.getElementById('review-account-type-individual').textContent = 'شخص مستقل';
+                    
+                    // Personal info
+                    document.getElementById('review-name').textContent = document.getElementById('full-name').value;
+                    document.getElementById('review-email').textContent = document.getElementById('email').value;
+                    document.getElementById('review-phone').textContent = document.getElementById('phone').value;
+                    document.getElementById('review-national-id').textContent = document.getElementById('national-id').value;
+                    
+                    // Professional info
+                    document.getElementById('review-profession').textContent = document.getElementById('profession').options[document.getElementById('profession').selectedIndex].text;
+                    document.getElementById('review-experience').textContent = document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text;
+                    document.getElementById('review-bio').textContent = document.getElementById('bio').value;
+                    
+                    // Membership
+                    const selectedMembership = document.querySelector('#step-3-individual .membership-card.selected');
+                    if (selectedMembership) {
+                        document.getElementById('review-membership-individual').textContent = selectedMembership.querySelector('.membership-title').textContent;
+                    }
+                } else if (selectedAccountType === 'company') {
+                    // Account type
+                    document.getElementById('review-account-type-company').textContent = 'شركة';
+                    
+                    // Company info
+                    document.getElementById('review-company-name').textContent = document.getElementById('company-name').value;
+                    document.getElementById('review-commercial-register').textContent = document.getElementById('commercial-register').value;
+                    document.getElementById('review-company-phone').textContent = document.getElementById('company-phone').value;
+                    document.getElementById('review-company-email').textContent = document.getElementById('company-email').value;
+                    
+                    // Professional info
+                    const companyServices = document.getElementById('company-services');
+                    let servicesText = '';
+                    for (let i = 0; i < companyServices.selectedOptions.length; i++) {
+                        servicesText += companyServices.selectedOptions[i].text;
+                        if (i < companyServices.selectedOptions.length - 1) servicesText += '، ';
+                    }
+                    document.getElementById('review-company-services').textContent = servicesText;
+                    
+                    document.getElementById('review-company-experience').textContent = document.getElementById('company-experience').options[document.getElementById('company-experience').selectedIndex].text;
+                    document.getElementById('review-company-bio').textContent = document.getElementById('company-bio').value;
+                    
+                    // Membership
+                    const selectedMembership = document.querySelector('#step-3-company .membership-card.selected');
+                    if (selectedMembership) {
+                        document.getElementById('review-membership-company').textContent = selectedMembership.querySelector('.membership-title').textContent;
+                    }
                 }
             }
             
-            const submitButton = document.getElementById('submit-application');
-            submitButton.addEventListener('click', function() {
-                const agreeTerms = document.getElementById('agree-terms').checked;
-                
-                if (!agreeTerms) {
-                    alert('يرجى الموافقة على الشروط والأحكام');
-                    return;
-                }
-                
-                const formData = {
-                    personalInfo: {
-                        name: document.getElementById('full-name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        nationalId: document.getElementById('national-id').value
-                    },
-                    professionalInfo: {
-                        profession: document.getElementById('profession').value,
-                        experience: document.getElementById('experience').value,
-                        bio: document.getElementById('bio').value
-                    },
-                    membership: document.querySelector('.membership-card.selected') ? 
-                        document.querySelector('.membership-card.selected').getAttribute('data-membership') : null
-                };
-                
-                console.log('بيانات تسجيل الحرفي:', formData);
-                
-                alert('تم إرسال طلبك بنجاح! سيتم مراجعته من قبل مسؤول النظام والاتصال بك خلال 48 ساعة.');
-                
-              
-            });
+            // Submit buttons
+            const submitIndividualButton = document.getElementById('submit-application-individual');
+            const submitCompanyButton = document.getElementById('submit-application-company');
+            
+            if (submitIndividualButton) {
+                submitIndividualButton.addEventListener('click', function() {
+                    const agreeTerms = document.getElementById('agree-terms-individual').checked;
+                    
+                    if (!agreeTerms) {
+                        alert('يرجى الموافقة على الشروط والأحكام');
+                        return;
+                    }
+                    
+                    const formData = {
+                        accountType: 'individual',
+                        personalInfo: {
+                            name: document.getElementById('full-name').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            nationalId: document.getElementById('national-id').value
+                        },
+                        professionalInfo: {
+                            profession: document.getElementById('profession').value,
+                            experience: document.getElementById('experience').value,
+                            bio: document.getElementById('bio').value
+                        },
+                        membership: document.querySelector('#step-3-individual .membership-card.selected') ? 
+                            document.querySelector('#step-3-individual .membership-card.selected').getAttribute('data-membership') : null
+                    };
+                    
+                    console.log('بيانات تسجيل الحرفي المستقل:', formData);
+                    alert('تم إرسال طلبك بنجاح! سيتم مراجعته من قبل مسؤول النظام والاتصال بك خلال 48 ساعة.');
+                });
+            }
+            
+            if (submitCompanyButton) {
+                submitCompanyButton.addEventListener('click', function() {
+                    const agreeTerms = document.getElementById('agree-terms-company').checked;
+                    
+                    if (!agreeTerms) {
+                        alert('يرجى الموافقة على الشروط والأحكام');
+                        return;
+                    }
+                    
+                    const companyServices = document.getElementById('company-services');
+                    let services = [];
+                    for (let i = 0; i < companyServices.selectedOptions.length; i++) {
+                        services.push(companyServices.selectedOptions[i].value);
+                    }
+                    
+                    const formData = {
+                        accountType: 'company',
+                        companyInfo: {
+                            companyName: document.getElementById('company-name').value,
+                            commercialRegister: document.getElementById('commercial-register').value,
+                            companyPhone: document.getElementById('company-phone').value,
+                            companyEmail: document.getElementById('company-email').value
+                        },
+                        professionalInfo: {
+                            services: services,
+                            experience: document.getElementById('company-experience').value,
+                            bio: document.getElementById('company-bio').value
+                        },
+                        membership: document.querySelector('#step-3-company .membership-card.selected') ? 
+                            document.querySelector('#step-3-company .membership-card.selected').getAttribute('data-membership') : null
+                    };
+                    
+                    console.log('بيانات تسجيل الشركة:', formData);
+                    alert('تم إرسال طلب شركتك بنجاح! سيتم مراجعته من قبل مسؤول النظام والاتصال بكم خلال 48 ساعة.');
+                });
+            }
         });
     </script>
 </body>
