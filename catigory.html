@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الفئات - Homerun</title>
+    <title>الشركات الخدماتية - Homerun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -258,7 +258,7 @@
             display: none;
         }
 
-        .categories-page {
+        .companies-page {
             padding: 40px 0;
         }
 
@@ -283,7 +283,7 @@
             margin: 0 auto;
         }
 
-        .categories-filter {
+        .companies-filter {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -329,13 +329,13 @@
             cursor: pointer;
         }
 
-        .categories-grid {
+        .companies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
         }
 
-        .category-card {
+        .company-card {
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -344,58 +344,103 @@
             cursor: pointer;
         }
 
-        .category-card:hover {
+        .company-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .category-header {
+        .company-header {
             padding: 20px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #eee;
         }
 
-        .category-icon {
-            width: 60px;
-            height: 60px;
+        .company-logo {
+            width: 70px;
+            height: 70px;
             background-color: var(--light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary);
             margin-left: 15px;
+            border: 3px solid #e9ecef;
         }
 
-        .category-info {
+        .company-info {
             flex: 1;
         }
 
-        .category-name {
+        .company-name {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 5px;
             color: var(--dark);
         }
 
-        .category-count {
+        .company-specialty {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .company-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-stars {
+            color: #ffc107;
+        }
+
+        .rating-value {
             color: var(--gray);
             font-size: 0.9rem;
         }
 
-        .category-body {
+        .company-body {
             padding: 20px;
         }
 
-        .category-description {
+        .company-description {
             color: var(--gray);
             margin-bottom: 15px;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .category-services {
+        .company-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .company-services {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -410,7 +455,7 @@
             color: var(--dark);
         }
 
-        .category-footer {
+        .company-footer {
             padding: 15px 20px;
             background: #f8f9fa;
             display: flex;
@@ -418,23 +463,27 @@
             align-items: center;
         }
 
-        .category-rating {
-            color: #ffc107;
+        .company-verified {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--success);
+            font-size: 0.9rem;
         }
 
-        .category-action {
+        .company-action {
             font-weight: 600;
             color: var(--primary);
             display: flex;
             align-items: center;
         }
 
-        .category-action i {
+        .company-action i {
             margin-right: 5px;
             transition: var(--transition);
         }
 
-        .category-card:hover .category-action i {
+        .company-card:hover .company-action i {
             transform: translateX(-5px);
         }
 
@@ -498,7 +547,7 @@
         }
 
         @media (max-width: 992px) {
-            .categories-filter {
+            .companies-filter {
                 flex-direction: column;
                 align-items: stretch;
             }
@@ -509,7 +558,6 @@
         }
 
         @media (max-width: 768px) {
-            /* تحسينات الشريط العلوي للهواتف */
             .top-bar {
                 padding: 8px 0;
             }
@@ -619,7 +667,7 @@
                 font-size: 2rem;
             }
             
-            .categories-grid {
+            .companies-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
@@ -635,46 +683,46 @@
                 padding: 0 10px;
             }
             
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .companies-grid {
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
             
-            .category-card {
+            .company-card {
                 min-height: 280px;
                 display: flex;
                 flex-direction: column;
             }
             
-            .category-header {
+            .company-header {
                 padding: 15px;
                 flex-direction: column;
                 text-align: center;
             }
             
-            .category-icon {
+            .company-logo {
                 margin-left: 0;
                 margin-bottom: 10px;
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 font-size: 1.5rem;
             }
             
-            .category-name {
+            .company-name {
                 font-size: 1.1rem;
             }
             
-            .category-body {
+            .company-body {
                 padding: 15px;
                 flex-grow: 1;
             }
             
-            .category-description {
+            .company-description {
                 font-size: 0.85rem;
                 margin-bottom: 10px;
             }
             
-            .category-services {
+            .company-services {
                 gap: 5px;
             }
             
@@ -683,7 +731,7 @@
                 padding: 4px 8px;
             }
             
-            .category-footer {
+            .company-footer {
                 padding: 10px 15px;
             }
             
@@ -718,69 +766,36 @@
                 font-size: 1rem;
             }
             
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .companies-grid {
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
             
-            .category-header {
+            .company-header {
                 padding: 12px;
             }
             
-            .category-icon {
-                width: 45px;
-                height: 45px;
+            .company-logo {
+                width: 55px;
+                height: 55px;
                 font-size: 1.3rem;
             }
             
-            .category-name {
+            .company-name {
                 font-size: 1rem;
             }
             
-            .category-count {
-                font-size: 0.8rem;
-            }
-            
-            .category-body {
+            .company-body {
                 padding: 12px;
             }
             
-            .category-description {
+            .company-description {
                 font-size: 0.8rem;
             }
             
             .service-tag {
                 font-size: 0.7rem;
                 padding: 3px 6px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .page-title {
-                font-size: 1.6rem;
-            }
-            
-            .page-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-        }
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            .page-header {
-                padding: 30px 0;
-            }
-            
-            .top-bar {
-                padding: 4px 0;
-            }
-            
-            .navbar-content {
-                padding: 8px 0;
             }
         }
     </style>
@@ -816,20 +831,20 @@
             
             <ul class="nav-links">
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="catigory.html">الفئات</a></li>
-                <li><a href="service.html">مقدمو الخدمات</a></li>
+                <li><a href="catigory.html">الشركات</a></li>
+                <li><a href="service.html">الفنيون المستقلون</a></li>
                 <li><a href="howwork.html">كيف تعمل</a></li>
                 <li><a href="about.html">عن المنصة</a></li>
                 <li><a href="contact.html">اتصل بنا</a></li>
                 
                 <li class="mobile-auth-buttons">
-                      <a href="prosignup.html" class="btn btn-outline">تسجيل كحرفي</a>
-                <a href="login.html" class="btn btn-primary">تسجيل الدخول</a>
+                    <a href="prosignup.html" class="btn btn-outline">تسجيل كمقدّم خدمات </a>
+                    <a href="login.html" class="btn btn-primary">تسجيل الدخول</a>
                 </li>
             </ul>
             
             <div class="nav-actions">
-                  <a href="prosignup.html" class="btn btn-outline">تسجيل كحرفي</a>
+                <a href="prosignup.html" class="btn btn-outline"> تسجيل كمقدّم خدمات</a>
                 <a href="login.html" class="btn btn-primary">تسجيل الدخول</a>
             </div>
             
@@ -839,318 +854,383 @@
         </div>
     </nav>
 
-
     <div class="page-header">
         <div class="container">
-            <h1 class="page-title">فئات الخدمات</h1>
-            <p class="page-subtitle">اكتشف جميع الخدمات المتاحة على منصتنا واختر ما يناسب احتياجاتك من بين مئات الحرفيين والمتخصصين</p>
+            <h1 class="page-title">الشركات الخدماتية</h1>
+            <p class="page-subtitle">اكتشف أفضل الشركات المتخصصة في تقديم الخدمات المنزلية والتجارية بجودة عالية واحترافية</p>
         </div>
     </div>
 
-    <div class="container categories-page">
-        <div class="categories-filter">
+    <div class="container companies-page">
+        <div class="companies-filter">
             <div class="filter-options">
                 <select class="filter-select">
-                    <option>جميع الفئات</option>
-                    <option>السباكة</option>
-                    <option>الكهرباء</option>
-                    <option>النقاشة والديكور</option>
-                    <option>النجارة</option>
+                    <option>جميع التخصصات</option>
+                    <option>خدمات الإنترنت</option>
+                    <option>الصيانة المنزلية</option>
+                    <option>النظافة والتعقيم</option>
+                    <option>السباكة والكهرباء</option>
                     <option>التكييف والتبريد</option>
-                    <option>الإلكترونيات</option>
                 </select>
                 
                 <select class="filter-select">
-                    <option>الترتيب بحسب: الأكثر شيوعاً</option>
-                    <option>الأعلى تقييماً</option>
-                    <option>الأقل سعراً</option>
-                    <option>الأعلى سعراً</option>
+                    <option>الترتيب بحسب: الأعلى تقييماً</option>
+                    <option>الأكثر خبرة</option>
+                    <option>الأكبر حجماً</option>
                     <option>الأحدث</option>
                 </select>
             </div>
             
             <div class="search-box">
-                <input type="text" class="search-input" placeholder="ابحث عن خدمة معينة...">
+                <input type="text" class="search-input" placeholder="ابحث عن شركة معينة...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
         </div>
 
-        <div class="categories-grid">
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-wrench"></i>
+        <div class="companies-grid">
+            <!-- شركة خدمات الإنترنت -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-wifi"></i>
                     </div>
-                    <div class="category-info">
-                        <h3 class="category-name">السباكة</h3>
-                        <div class="category-count">125 حرفي</div>
+                    <div class="company-info">
+                        <h3 class="company-name">شركة سيبو للاتصالات</h3>
+                        <div class="company-specialty">خدمات الإنترنت والاتصالات</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-value">(4.5)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="category-body">
-                    <p class="category-description">خدمات سباكة منزلية وتجارية متكاملة لجميع احتياجاتك من الإصلاحات البسيطة إلى التركيبات المعقدة.</p>
-                    <div class="category-services">
-                        <span class="service-tag">تصليح تسريبات</span>
-                        <span class="service-tag">تركيب حنفيات</span>
-                        <span class="service-tag">تنظيف مجاري</span>
-                        <span class="service-tag">تركيب سخانات</span>
+                <div class="company-body">
+                    <p class="company-description">شركة رائدة في مجال تركيب وصيانة خطوط الإنترنت السريعة، تقدم خدمات احترافية بجودة عالية وبأسعار تنافسية.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">20+</span>
+                            <span class="stat-label">فني متخصص</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">500+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
+                        <span class="service-tag">تركيب خطوط إنترنت</span>
+                        <span class="service-tag">صيانة الشبكات</span>
+                        <span class="service-tag">تحسين الإشارة</span>
+                        <span class="service-tag">استشارات تقنية</span>
                     </div>
                 </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
                     </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-bolt"></i>
+            <!-- شركة الصيانة المنزلية -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-home"></i>
                     </div>
-                    <div class="category-info">
-                        <h3 class="category-name">الكهرباء</h3>
-                        <div class="category-count">98 حرفي</div>
+                    <div class="company-info">
+                        <h3 class="company-name">البيت الآمن للصيانة</h3>
+                        <div class="company-specialty">الصيانة المنزلية الشاملة</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-value">(5.0)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="category-body">
-                    <p class="category-description">فنيو كهرباء معتمدون لجميع أعمال التركيبات المنزلية والتجارية وإصلاح الأعطال الكهربائية.</p>
-                    <div class="category-services">
-                        <span class="service-tag">تركيب وصيانة</span>
-                        <span class="service-tag">أعمال التأسيس</span>
-                        <span class="service-tag">إصلاح أعطال</span>
-                        <span class="service-tag">تركيب كاميرات</span>
+                <div class="company-body">
+                    <p class="company-description">نقدم خدمات الصيانة المنزلية الشاملة بمهنية عالية، مع فريق متكامل من الفنيين المدربين على أحدث التقنيات.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">35+</span>
+                            <span class="stat-label">فني متخصص</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">1200+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
+                        <span class="service-tag">سباكة منزلية</span>
+                        <span class="service-tag">كهرباء منزلية</span>
+                        <span class="service-tag">نقاشة وديكور</span>
+                        <span class="service-tag">نجارة وأثاث</span>
                     </div>
                 </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
                     </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-paint-roller"></i>
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-name">النقاشة والديكور</h3>
-                        <div class="category-count">76 حرفي</div>
-                    </div>
-                </div>
-                <div class="category-body">
-                    <p class="category-description">خدمات متكاملة للدهان والديكور بأحدث التقنيات والألوان لتحويل منزلك إلى تحفة فنية.</p>
-                    <div class="category-services">
-                        <span class="service-tag">دهان حوائط</span>
-                        <span class="service-tag">ورق جدران</span>
-                        <span class="service-tag">ديكورات جبس</span>
-                        <span class="service-tag">دهان أثاث</span>
-                    </div>
-                </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(5.0)</span>
-                    </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-toolbox"></i>
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-name">النجارة</h3>
-                        <div class="category-count">64 حرفي</div>
-                    </div>
-                </div>
-                <div class="category-body">
-                    <p class="category-description">نجارون محترفون لجميع أعمال النجارة المنزلية من الأثاث إلى التركيبات الخشبية والديكورات.</p>
-                    <div class="category-services">
-                        <span class="service-tag">تصنيع أثاث</span>
-                        <span class="service-tag">تركيب مطابخ</span>
-                        <span class="service-tag">إصلاح أعطال</span>
-                        <span class="service-tag">تركيب أرضيات</span>
-                    </div>
-                </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
-                    </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-snowflake"></i>
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-name">التكييف والتبريد</h3>
-                        <div class="category-count">53 حرفي</div>
-                    </div>
-                </div>
-                <div class="category-body">
-                    <p class="category-description">فنيو تكييف معتمدون لصيانة وتركيب جميع أنواع المكيفات المنزلية والتجارية بضمان على العمل.</p>
-                    <div class="category-services">
-                        <span class="service-tag">صيانة مكيفات</span>
-                        <span class="service-tag">تنظيف وتعبئة</span>
-                        <span class="service-tag">تركيب مكيفات</span>
-                        <span class="service-tag">إصلاح أعطال</span>
-                    </div>
-                </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
-                    </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-tv"></i>
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-name">الإلكترونيات</h3>
-                        <div class="category-count">89 حرفي</div>
-                    </div>
-                </div>
-                <div class="category-body">
-                    <p class="category-description">فنيو إلكترونيات متخصصون في صيانة الأجهزة المنزلية والإلكترونية بجميع أنواعها وأعطالها.</p>
-                    <div class="category-services">
-                        <span class="service-tag">صيانة تلفزيونات</span>
-                        <span class="service-tag">إصلاح أجهزة</span>
-                        <span class="service-tag">تركيب أنظمة</span>
-                        <span class="service-tag">صيانة أجهزة منزلية</span>
-                    </div>
-                </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.5)</span>
-                    </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
+            <!-- شركة النظافة -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
                         <i class="fas fa-broom"></i>
                     </div>
-                    <div class="category-info">
-                        <h3 class="category-name">النظافة</h3>
-                        <div class="category-count">112 حرفي</div>
+                    <div class="company-info">
+                        <h3 class="company-name">نظافة دوت كوم</h3>
+                        <div class="company-specialty">خدمات النظافة والتعقيم</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">(4.0)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="category-body">
-                    <p class="category-description">خدمات نظافة متكاملة للمنازل والمكاتب باستخدام أحدث المعدات والمنظفات الآمنة والفعالة.</p>
-                    <div class="category-services">
+                <div class="company-body">
+                    <p class="company-description">شركة متخصصة في خدمات النظافة الشاملة للمنازل والمكاتب، باستخدام أحدث المعدات والمنظفات الآمنة.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">50+</span>
+                            <span class="stat-label">عامل نظافة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">800+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
                         <span class="service-tag">تنظيف منازل</span>
                         <span class="service-tag">تنظيف مكاتب</span>
                         <span class="service-tag">تعقيم وتطهير</span>
                         <span class="service-tag">تنظيف سجاد</span>
                     </div>
                 </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(5.0)</span>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
                     </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="category-card">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-leaf"></i>
+            <!-- شركة التكييف -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-snowflake"></i>
                     </div>
-                    <div class="category-info">
-                        <h3 class="category-name">تنسيق الحدائق</h3>
-                        <div class="category-count">41 حرفي</div>
+                    <div class="company-info">
+                        <h3 class="company-name">تكييف تك</h3>
+                        <div class="company-specialty">تكييف وتبريد مركزي</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-value">(4.5)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="category-body">
-                    <p class="category-description">مصممو حدائق محترفون لتحويل مساحاتك الخارجية إلى جنة خضراء بتصميمات مبتنية وعملية.</p>
-                    <div class="category-services">
-                        <span class="service-tag">تنسيق حدائق</span>
-                        <span class="service-tag">تركيب نباتات</span>
-                        <span class="service-tag">صيانة مسطحات</span>
-                        <span class="service-tag">أنظمة ري</span>
+                <div class="company-body">
+                    <p class="company-description">متخصصون في تركيب وصيانة جميع أنواع أنظمة التكييف والتبريد، مع ضمان على العمل وخدمة ما بعد البيع.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">25+</span>
+                            <span class="stat-label">فني تكييف</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">10</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">600+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
+                        <span class="service-tag">تركيب مكيفات</span>
+                        <span class="service-tag">صيانة دورية</span>
+                        <span class="service-tag">تنظيف وتعقيم</span>
+                        <span class="service-tag">إصلاح أعطال</span>
                     </div>
                 </div>
-                <div class="category-footer">
-                    <div class="category-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span style="color: var(--gray); font-size: 0.9rem;">(4.0)</span>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
                     </div>
-                    <a href="#" class="category-action">
-                        <span>عرض الخدمات</span>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- شركة الأمن والسلامة -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">أمان للأمن والسلامة</h3>
+                        <div class="company-specialty">أنظمة الأمن والمراقبة</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">(4.0)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-body">
+                    <p class="company-description">نوفر حلول أمنية متكاملة لأنظمة المراقبة والإنذار، مع فريق فني مدرب على أحدث التقنيات الأمنية.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">18+</span>
+                            <span class="stat-label">فني أمني</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">7</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">350+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
+                        <span class="service-tag">كاميرات مراقبة</span>
+                        <span class="service-tag">أنظمة إنذار</span>
+                        <span class="service-tag">تحكم دخول</span>
+                        <span class="service-tag">صيانة أنظمة</span>
+                    </div>
+                </div>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
+                    </div>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- شركة الديكور -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">ديكوريا</h3>
+                        <div class="company-specialty">ديكور وتصميم داخلي</div>
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-value">(5.0)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-body">
+                    <p class="company-description">نحول مساحاتك إلى تحف فنية بتصميمات مبتكرة وعملية، مع فريق من المصممين المحترفين والحرفيين المهرة.</p>
+                    
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">30+</span>
+                            <span class="stat-label">فني ديكور</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">9</span>
+                            <span class="stat-label">سنوات خبرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">450+</span>
+                            <span class="stat-label">عميل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="company-services">
+                        <span class="service-tag">تصميم داخلي</span>
+                        <span class="service-tag">دهان وديكور</span>
+                        <span class="service-tag">تركيب أرضيات</span>
+                        <span class="service-tag">ديكور جبس</span>
+                    </div>
+                </div>
+                <div class="company-footer">
+                    <div class="company-verified">
+                        <i class="fas fa-check-circle"></i>
+                        <span>شركة موثوقة</span>
+                    </div>
+                    <a href="#" class="company-action">
+                        <span>عرض التفاصيل</span>
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
@@ -1175,8 +1255,8 @@
                     <h3>روابط سريعة</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="catigory.html">الفئات</a></li>
-                        <li><a href="service.html">مقدمو الخدمات</a></li>
+                        <li><a href="catigory.html">الشركات</a></li>
+                        <li><a href="service.html">الفنيون المستقلون</a></li>
                         <li><a href="howwork.html">كيف تعمل</a></li>
                         <li><a href="about.html">عن المنصة</a></li>
                         <li><a href="contact.html">اتصل بنا</a></li>
@@ -1251,11 +1331,11 @@
                 }
             });
             
-            const categoryCards = document.querySelectorAll('.category-card');
-            categoryCards.forEach(card => {
+            const companyCards = document.querySelectorAll('.company-card');
+            companyCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    const categoryName = this.querySelector('.category-name').textContent;
-                    alert(`سيتم عرض خدمات: ${categoryName}`);
+                    const companyName = this.querySelector('.company-name').textContent;
+                    alert(`سيتم عرض تفاصيل: ${companyName}`);
                 });
             });
             
@@ -1280,7 +1360,7 @@
                 });
             }, observerOptions);
             
-            const animatedElements = document.querySelectorAll('.category-card');
+            const animatedElements = document.querySelectorAll('.company-card');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
